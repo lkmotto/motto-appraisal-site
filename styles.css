@@ -96,8 +96,8 @@
   --space-32: 8rem;
 
   /* Typography */
-  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:    'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Syne', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
   /* Layout */
@@ -268,10 +268,11 @@ button {
 
 .section-title {
   font-size: var(--text-2xl);
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--text);
   margin-bottom: var(--space-6);
+  font-family: var(--font-display);
 }
 
 .section-subtitle {
@@ -329,10 +330,11 @@ button {
 
 .nav__brand {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   white-space: nowrap;
+  font-family: var(--font-display);
 }
 
 /* Legacy — keep for backwards compat */
@@ -634,12 +636,13 @@ button {
 
 .hero__title {
   font-size: var(--text-hero);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--text);
   max-width: 20ch;
   margin-bottom: var(--space-8);
+  font-family: var(--font-display);
 }
 
 .hero__line-1,
@@ -1643,10 +1646,11 @@ button {
 
 .page-header__title {
   font-size: var(--text-2xl);
-  font-weight: 900;
+  font-weight: 800;
   color: var(--text);
   letter-spacing: -0.03em;
   margin-bottom: var(--space-4);
+  font-family: var(--font-display);
 }
 
 .page-header__subtitle {
@@ -2014,7 +2018,7 @@ button {
 
 .newsletter-subscribe-block {
   text-align: center;
-  padding: var(--space-8) var(--space-6);
+  padding: var(--space-8) var(--space-6) var(--space-12);
 }
 
 .subscribe-label {
@@ -2093,4 +2097,35 @@ button {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+}
+
+/* ── FOOTER SOCIAL LINKS ─────────────────────────────────── */
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3) !important;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-2) !important;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: color 0.2s ease;
+}
+
+.footer__social-link:hover {
+  color: var(--accent) !important;
+}
+
+.footer__social-link svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.footer__social-link:hover svg {
+  opacity: 1;
 }

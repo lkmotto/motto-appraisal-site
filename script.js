@@ -282,42 +282,117 @@
   /* ── THREE.JS HERO PARTICLES ─────────────────────────── */
 
   function initHeroParticles() {
-    if (window.innerWidth < 768) return; // Skip on mobile
+    if (window.innerWidth < 768) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var canvas = document.getElementById('hero-canvas');
     if (!canvas || typeof THREE === 'undefined') return;
 
+    var W = canvas.offsetWidth || window.innerWidth;
+    var H = canvas.offsetHeight || window.innerHeight;
+
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false });
-    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    var camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    camera.position.z = 10;
 
-    // Create particles
-    var geometry = new THREE.BufferGeometry();
-    var count = 120;
-    var positions = new Float32Array(count * 3);
-    for (var i = 0; i < count * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 20;
+    // ── Particles ────────────────────────────────────────────
+    var COUNT = 220;
+    var SPREAD = 24;
+    var positions = new Float32Array(COUNT * 3);
+    var velocities = new Float32Array(COUNT * 3);
+
+    for (var i = 0; i < COUNT; i++) {
+      positions[i * 3]     = (Math.random() - 0.5) * SPREAD;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * SPREAD;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * SPREAD;
+      velocities[i * 3]     = (Math.random() - 0.5) * 0.005;
+      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.005;
+      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.003;
     }
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    var material = new THREE.PointsMaterial({
-      color: 0x00A0DE,
-      size: 0.06,
+    var pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    var pMat = new THREE.PointsMaterial({
+      color: 0x00A8E8,
+      size: 0.12,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.75,
+      sizeAttenuation: true,
     });
 
-    var particles = new THREE.Points(geometry, material);
-    scene.add(particles);
-    camera.position.z = 8;
+    var particleMesh = new THREE.Points(pGeo, pMat);
+    scene.add(particleMesh);
 
+    // ── Connection lines ─────────────────────────────────────
+    var lineGeo = new THREE.BufferGeometry();
+    var MAX_SEGS = COUNT * 5;
+    var linePositions = new Float32Array(MAX_SEGS * 2 * 3);
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    var lineMat = new THREE.LineBasicMaterial({
+      color: 0x0066CC,
+      transparent: true,
+      opacity: 0.22,
+    });
+    var lineSegs = new THREE.LineSegments(lineGeo, lineMat);
+    scene.add(lineSegs);
+
+    var LINK_DIST = 6.0;
+    var frame = 0;
+
+    function updateLines() {
+      var lp = lineGeo.attributes.position.array;
+      var pos = pGeo.attributes.position.array;
+      var idx = 0;
+      var limit = MAX_SEGS * 6;
+      for (var a = 0; a < COUNT && idx < limit; a++) {
+        for (var b = a + 1; b < COUNT && idx < limit; b++) {
+          var dx = pos[a*3]   - pos[b*3];
+          var dy = pos[a*3+1] - pos[b*3+1];
+          var dz = pos[a*3+2] - pos[b*3+2];
+          var dist2 = dx*dx + dy*dy + dz*dz;
+          if (dist2 < LINK_DIST * LINK_DIST) {
+            lp[idx++] = pos[a*3];     lp[idx++] = pos[a*3+1]; lp[idx++] = pos[a*3+2];
+            lp[idx++] = pos[b*3];     lp[idx++] = pos[b*3+1]; lp[idx++] = pos[b*3+2];
+          }
+        }
+      }
+      lineGeo.setDrawRange(0, idx / 3);
+      lineGeo.attributes.position.needsUpdate = true;
+    }
+
+    // ── Animation loop ───────────────────────────────────────
     var animId;
+    var HALF = SPREAD / 2;
+
     function animate() {
       animId = requestAnimationFrame(animate);
-      particles.rotation.x += 0.0003;
-      particles.rotation.y += 0.0005;
+      frame++;
+
+      var pos = pGeo.attributes.position.array;
+      for (var i = 0; i < COUNT; i++) {
+        pos[i*3]     += velocities[i*3];
+        pos[i*3+1]   += velocities[i*3+1];
+        pos[i*3+2]   += velocities[i*3+2];
+        if (pos[i*3]   > HALF)  pos[i*3]   = -HALF;
+        if (pos[i*3]   < -HALF) pos[i*3]   = HALF;
+        if (pos[i*3+1] > HALF)  pos[i*3+1] = -HALF;
+        if (pos[i*3+1] < -HALF) pos[i*3+1] = HALF;
+        if (pos[i*3+2] > HALF)  pos[i*3+2] = -HALF;
+        if (pos[i*3+2] < -HALF) pos[i*3+2] = HALF;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+
+      // Slow global rotation
+      particleMesh.rotation.y += 0.00035;
+      lineSegs.rotation.y     += 0.00035;
+
+      // Refresh lines every 4 frames
+      if (frame % 4 === 0) updateLines();
+
       renderer.render(scene, camera);
     }
     animate();
@@ -326,19 +401,16 @@
     window.addEventListener('resize', function () {
       if (window.innerWidth < 768) {
         cancelAnimationFrame(animId);
-        renderer.domElement.style.display = 'none';
+        canvas.style.display = 'none';
         return;
       }
-      renderer.domElement.style.display = '';
-      camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+      canvas.style.display = '';
+      var w = canvas.offsetWidth;
+      var h = canvas.offsetHeight;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+      renderer.setSize(w, h);
     });
-
-    // Respect prefers-reduced-motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      cancelAnimationFrame(animId);
-    }
   }
 
   // Initialize particles after DOM is ready
