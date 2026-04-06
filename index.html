@@ -3,28 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Motto Appraisal Service — Licensed DFW Real Estate Appraiser</title>
-  <meta name="description" content="Licensed DFW real estate appraiser with 2,000+ appraisals completed. Pre-listing, purchase, divorce/estate, and DSCR lender appraisals. The perspective no algorithm can give you.">
+  <title>Motto Appraisal Service | Licensed DFW Real Estate Appraiser</title>
+  <meta name="description" content="Licensed residential appraiser serving Dallas, Tarrant, Denton, Collin, and Kaufman counties. Pre-listing, purchase, DSCR, divorce and estate appraisals. 2,000+ completed.">
+  <meta name="keywords" content="DFW appraiser, Dallas real estate appraiser, DSCR appraisal, pre-listing appraisal, Fort Worth appraiser, Texas home appraisal">
+  <link rel="canonical" href="https://mottoappraisalservice.netlify.app/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Motto Appraisal Service — Licensed DFW Real Estate Appraiser">
-  <meta property="og:description" content="Licensed DFW real estate appraiser with 2,000+ appraisals completed. The perspective no algorithm can give you.">
+  <meta property="og:title" content="Motto Appraisal Service | Licensed DFW Appraiser">
+  <meta property="og:description" content="2,000+ residential appraisals across DFW. Pre-listing, DSCR, legal, and purchase support.">
+  <meta property="og:url" content="https://mottoappraisalservice.netlify.app/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mottoappraisal.com">
-  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Motto Appraisal Service — Licensed DFW Real Estate Appraiser">
-  <meta name="twitter:description" content="Licensed DFW real estate appraiser with 2,000+ appraisals completed.">
+  <meta name="twitter:title" content="Motto Appraisal Service | Licensed DFW Appraiser">
+  <meta name="twitter:description" content="2,000+ residential appraisals across DFW.">
 
-  <!-- Google Tag Manager (placeholder — uncomment when GTM ID is ready) -->
-  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+  <!-- Google Tag Manager — add your GTM-XXXXXX container ID to activate -->
+<!-- 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXX');</script>
+-->
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js for hero particle background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
   <link rel="stylesheet" href="styles.css">
 
@@ -54,25 +64,25 @@
   </script>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) placeholder -->
-  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+  <!-- Google Tag Manager (noscript) — add your GTM-XXXXXX container ID to activate -->
+<!--
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+-->
 
-  <!-- ── NAVIGATION ─────────────────────────────────── -->
+    <!-- ── NAVIGATION ─────────────────────────────────── -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service — Home">
-        <img src="assets/logo-white.png" alt="Motto Appraisal Service" class="nav__logo-mark" width="44" height="44" style="filter: brightness(1); transition: filter 0.3s;">
-        <div class="nav__logo-text">
-          Motto<span>Appraisal Service</span>
-        </div>
+        <img src="assets/logo-white.png" alt="Motto Appraisal Service" class="nav__logo-mark" width="40" height="40">
+        <span class="nav__brand">Motto Appraisal Service</span>
       </a>
 
       <ul class="nav__links" role="list">
         <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="newsletter.html" class="nav-link">Newsletter</a></li>
-        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
 
       <div class="nav__cta">
@@ -99,12 +109,10 @@
 
   <!-- ── SECTION 1: HERO WITH PARALLAX ──────────────── -->
   <section class="hero" id="hero">
+    <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     <div class="hero-bg" data-parallax="0.4"></div>
     <div class="hero__grid-overlay"></div>
     <div class="hero__content">
-      <div class="hero__logo-intro">
-        <img src="assets/logo-white.png" alt="Motto Appraisal Service" class="hero-logo" style="width:180px;height:180px;object-fit:contain;filter:drop-shadow(0 0 30px rgba(0,168,232,0.6));animation:logo-glow 2s ease 0.5s forwards;">
-      </div>
       <h1 class="hero__title reveal-el">
         <span class="hero__line-1">Every deal in DFW gets an appraisal.</span>
         <span class="hero__line-2">Most don't get an appraiser who's done <em class="counter-inline" data-target="2000" data-suffix="+">2,000+</em> of them.</span>
@@ -247,39 +255,29 @@
           </p>
         </div>
         <div class="newsletter-embed reveal-el reveal-delay-1">
-          <iframe src="https://embeds.beehiiv.com/pub_6b0e21de-3244-40cb-a06c-b56c603e28fc"
-            data-test-id="beehiiv-embed"
-            width="100%"
-            height="320"
-            frameborder="0"
-            scrolling="no"
-            style="border-radius:12px;background:transparent;">
-          </iframe>
+          <div class="newsletter-subscribe-block">
+            <p class="subscribe-label">Get the weekly appraisal perspective:</p>
+            <a href="https://mottoappraisalservice.beehiiv.com/subscribe" 
+               target="_blank" rel="noopener"
+               class="btn btn--primary btn--lg subscribe-cta">
+              Subscribe Free
+            </a>
+            <p class="subscribe-note">DFW market data, appraiser insights, real deal math. Weekly.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── SECTION 6: FOOTER ──────────────────────────── -->
+    <!-- ── FOOTER ─────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service — Home">
-            <svg class="nav__logo-mark" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M10,100 L110,20 L210,100" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
-              <rect x="16" y="96" width="48" height="10" fill="currentColor"/>
-              <rect x="32" y="96" width="16" height="98" fill="currentColor"/>
-              <rect x="80" y="96" width="14" height="98" fill="currentColor"/>
-              <rect x="120" y="96" width="14" height="98" fill="currentColor"/>
-              <path d="M80,96 L107,132 L134,96" fill="none" stroke="currentColor" stroke-width="11" stroke-linejoin="miter" stroke-linecap="square"/>
-              <rect x="152" y="96" width="14" height="98" fill="currentColor"/>
-              <rect x="186" y="96" width="14" height="98" fill="currentColor"/>
-              <path d="M155,100 L182,148 L162,148 L196,194" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <div class="nav__logo-text">
-              Motto<span>Appraisal Service</span>
-            </div>
+          <a href="index.html" class="footer__brand-link" aria-label="Motto Appraisal Service — Home">
+            <img src="assets/logo-white.png" alt="Motto Appraisal Service" width="40" height="40" style="object-fit:contain;">
+            <span class="nav__brand">Motto Appraisal Service</span>
           </a>
           <p>Licensed DFW Appraiser &middot; Est. 2019</p>
         </div>
@@ -305,7 +303,7 @@
           <h4 class="footer__heading">Connect</h4>
           <ul class="footer__links" role="list">
             <li><a href="https://linkedin.com/in/lkmotto" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="newsletter.html">Beehiiv Newsletter</a></li>
+            <li><a href="https://mottoappraisalservice.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter</a></li>
             <li><a href="contact.html">Book a Call</a></li>
           </ul>
         </div>

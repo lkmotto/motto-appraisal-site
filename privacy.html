@@ -19,13 +19,14 @@
 </head>
 <body>
 
-  <!-- ── NAVIGATION ─────────────────────────────────── -->
+    <!-- ── NAVIGATION ─────────────────────────────────── -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service — Home">
-        <img src="assets/logo-white.png" alt="Motto Appraisal" width="44" height="44" style="object-fit:contain;">
-        <div class="nav__logo-text">Motto<span>Appraisal Service</span></div>
+        <img src="assets/logo-white.png" alt="Motto Appraisal Service" class="nav__logo-mark" width="40" height="40">
+        <span class="nav__brand">Motto Appraisal Service</span>
       </a>
+
       <ul class="nav__links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -33,22 +34,27 @@
         <li><a href="newsletter.html">Newsletter</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+
       <div class="nav__cta">
         <a href="contact.html" class="btn btn--primary btn--sm">Book Appraisal</a>
       </div>
+
       <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </nav>
 
+  <!-- Mobile Menu -->
   <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
     <a href="newsletter.html">Newsletter</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn btn--primary" style="margin-top: var(--space-4);">Book Appraisal</a>
+    <a href="contact.html" class="btn btn--primary" style="margin-top: 2rem;">Book Appraisal</a>
   </div>
 
   <!-- ── PAGE HEADER ────────────────────────────────── -->
@@ -238,23 +244,23 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────────────── -->
+    <!-- ── FOOTER ─────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service — Home">
-            <img src="assets/logo-white.png" alt="Motto Appraisal" width="44" height="44" style="object-fit:contain;">
-            <div class="nav__logo-text">Motto<span>Appraisal Service</span></div>
+          <a href="index.html" class="footer__brand-link" aria-label="Motto Appraisal Service — Home">
+            <img src="assets/logo-white.png" alt="Motto Appraisal Service" width="40" height="40" style="object-fit:contain;">
+            <span class="nav__brand">Motto Appraisal Service</span>
           </a>
-          <p>The appraisal perspective no algorithm can give you. Licensed DFW real estate appraiser.</p>
+          <p>Licensed DFW Appraiser &middot; Est. 2019</p>
         </div>
         <div>
           <h4 class="footer__heading">Services</h4>
           <ul class="footer__links" role="list">
             <li><a href="services.html#pre-listing">Pre-Listing</a></li>
-            <li><a href="services.html#purchase">Purchase & Lending</a></li>
-            <li><a href="services.html#legal">Divorce & Estate</a></li>
+            <li><a href="services.html#purchase">Purchase &amp; Lending</a></li>
+            <li><a href="services.html#legal">Divorce &amp; Estate</a></li>
             <li><a href="services.html#investment">Investment / DSCR</a></li>
           </ul>
         </div>
@@ -264,19 +270,22 @@
             <li><a href="about.html">About Luke</a></li>
             <li><a href="newsletter.html">Newsletter</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer__heading">Connect</h4>
           <ul class="footer__links" role="list">
             <li><a href="https://linkedin.com/in/lkmotto" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Beehiiv Newsletter</a></li>
+            <li><a href="https://mottoappraisalservice.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter</a></li>
             <li><a href="contact.html">Book a Call</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <div class="footer__copyright">&copy; <span id="year"></span> Motto Appraisal Service. All rights reserved.</div>
+        <div class="footer__copyright">
+          &copy; <span id="year"></span> Motto Appraisal Service. All rights reserved.
+        </div>
         <div class="footer__legal">
           <a href="privacy.html">Privacy Policy</a>
           <a href="privacy.html#cookies">Cookie Policy</a>

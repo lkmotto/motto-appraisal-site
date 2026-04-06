@@ -278,4 +278,70 @@
     });
   });
 
+
+  /* ── THREE.JS HERO PARTICLES ─────────────────────────── */
+
+  function initHeroParticles() {
+    if (window.innerWidth < 768) return; // Skip on mobile
+
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas || typeof THREE === 'undefined') return;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false });
+    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+    // Create particles
+    var geometry = new THREE.BufferGeometry();
+    var count = 120;
+    var positions = new Float32Array(count * 3);
+    for (var i = 0; i < count * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 20;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    var material = new THREE.PointsMaterial({
+      color: 0x00A0DE,
+      size: 0.06,
+      transparent: true,
+      opacity: 0.3,
+    });
+
+    var particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+    camera.position.z = 8;
+
+    var animId;
+    function animate() {
+      animId = requestAnimationFrame(animate);
+      particles.rotation.x += 0.0003;
+      particles.rotation.y += 0.0005;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', function () {
+      if (window.innerWidth < 768) {
+        cancelAnimationFrame(animId);
+        renderer.domElement.style.display = 'none';
+        return;
+      }
+      renderer.domElement.style.display = '';
+      camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+    });
+
+    // Respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cancelAnimationFrame(animId);
+    }
+  }
+
+  // Initialize particles after DOM is ready
+  initHeroParticles();
+
 })();
