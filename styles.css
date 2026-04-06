@@ -1,3 +1,26 @@
+
+/* Real logo image — white version on dark background */
+.nav__logo-mark {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.nav__logo-mark:hover {
+  filter: drop-shadow(0 0 8px rgba(0, 168, 232, 0.8));
+  transform: scale(1.05);
+}
+
+.hero-logo {
+  animation: logo-glow-img 2s ease 0.3s both;
+}
+
+@keyframes logo-glow-img {
+  0%   { opacity: 0; filter: drop-shadow(0 0 0px rgba(0,168,232,0)); transform: scale(0.9); }
+  60%  { opacity: 1; filter: drop-shadow(0 0 40px rgba(0,168,232,0.9)); transform: scale(1.05); }
+  100% { opacity: 1; filter: drop-shadow(0 0 12px rgba(0,168,232,0.35)); transform: scale(1); }
+}
 /* ============================================================
    MOTTO APPRAISAL SERVICE — Parallax Rebuild
    Williams F1 × Technical Analysis × Personal Brand
