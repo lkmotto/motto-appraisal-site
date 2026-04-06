@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Motto Appraisal Service — Licensed DFW Real Estate Appraiser">
   <meta name="twitter:description" content="Licensed DFW real estate appraiser with 2,000+ appraisals completed.">
 
-  <!-- Google Tag Manager (placeholder) -->
+  <!-- Google Tag Manager (placeholder — uncomment when GTM ID is ready) -->
   <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
 
   <!-- Fonts -->
@@ -61,10 +61,25 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service — Home">
-        <svg class="nav__logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="2" width="32" height="32" rx="4" stroke="#7B3F2A" stroke-width="2"/>
-          <path d="M9 26V10l9 10 9-10v16" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="6" y1="30" x2="30" y2="30" stroke="#7B3F2A" stroke-width="1.5"/>
+        <svg class="nav__logo-mark logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" aria-label="TMN Monogram">
+          <!-- Roof outline -->
+          <path class="logo-draw" d="M20,100 L100,25 L180,100" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
+          <!-- T crossbar -->
+          <rect class="logo-draw-rect" x="22" y="95" width="44" height="10" fill="currentColor"/>
+          <!-- T stem -->
+          <rect class="logo-draw-rect" x="36" y="95" width="16" height="100" fill="currentColor"/>
+          <!-- M left leg -->
+          <rect class="logo-draw-rect" x="78" y="95" width="14" height="100" fill="currentColor"/>
+          <!-- M right leg -->
+          <rect class="logo-draw-rect" x="108" y="95" width="14" height="100" fill="currentColor"/>
+          <!-- M valley -->
+          <path class="logo-draw" d="M78,95 L100,130 L122,95" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
+          <!-- N left leg -->
+          <rect class="logo-draw-rect" x="140" y="95" width="14" height="100" fill="currentColor"/>
+          <!-- N right leg -->
+          <rect class="logo-draw-rect" x="166" y="95" width="14" height="100" fill="currentColor"/>
+          <!-- N diagonal (lightning bolt style) -->
+          <path class="logo-draw" d="M143,98 L168,148 L150,148 L177,195" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div class="nav__logo-text">
           Motto<span>Appraisal Service</span>
@@ -72,11 +87,11 @@
       </a>
 
       <ul class="nav__links" role="list">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="newsletter.html" class="nav-link">Newsletter</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
 
       <div class="nav__cta">
@@ -98,20 +113,35 @@
     <a href="about.html">About</a>
     <a href="newsletter.html">Newsletter</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn btn--primary" style="margin-top: var(--space-4);">Book Appraisal</a>
+    <a href="contact.html" class="btn btn--primary" style="margin-top: 2rem;">Book Appraisal</a>
   </div>
 
-  <!-- ── HERO ───────────────────────────────────────── -->
-  <section class="hero">
+  <!-- ── SECTION 1: HERO WITH PARALLAX ──────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" data-parallax="0.4"></div>
+    <div class="hero__grid-overlay"></div>
     <div class="hero__content">
-      <div class="hero__eyebrow fade-in">Licensed DFW Appraiser · Est. 2019</div>
-      <h1 class="hero__title fade-in stagger-1">
-        Every deal in DFW gets an appraisal. Most don't get an appraiser who's done <em>2,000+</em> of them.
+      <div class="hero__logo-intro">
+        <svg class="hero-logo logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path class="logo-draw" d="M20,100 L100,25 L180,100" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
+          <rect class="logo-draw-rect" x="22" y="95" width="44" height="10" fill="currentColor"/>
+          <rect class="logo-draw-rect" x="36" y="95" width="16" height="100" fill="currentColor"/>
+          <rect class="logo-draw-rect" x="78" y="95" width="14" height="100" fill="currentColor"/>
+          <rect class="logo-draw-rect" x="108" y="95" width="14" height="100" fill="currentColor"/>
+          <path class="logo-draw" d="M78,95 L100,130 L122,95" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
+          <rect class="logo-draw-rect" x="140" y="95" width="14" height="100" fill="currentColor"/>
+          <rect class="logo-draw-rect" x="166" y="95" width="14" height="100" fill="currentColor"/>
+          <path class="logo-draw" d="M143,98 L168,148 L150,148 L177,195" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 class="hero__title reveal-el">
+        <span class="hero__line-1">Every deal in DFW gets an appraisal.</span>
+        <span class="hero__line-2">Most don't get an appraiser who's done <em class="counter-inline" data-target="2000" data-suffix="+">2,000+</em> of them.</span>
       </h1>
-      <p class="hero__subtitle fade-in stagger-2">
-        Zillow's algorithm is off by a median 7.5% on off-market homes. Your deal deserves a number you can defend — from an appraiser who knows every street in this market.
+      <p class="hero__subtitle reveal-el reveal-delay-1">
+        Zillow is off by 7.5% on off-market homes. Your deal deserves better.
       </p>
-      <div class="hero__actions fade-in stagger-3">
+      <div class="hero__actions reveal-el reveal-delay-2">
         <a href="contact.html" class="btn btn--primary btn--lg">
           Book an Appraisal
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -120,222 +150,174 @@
           Read the Newsletter
         </a>
       </div>
-      <div class="hero__stats fade-in stagger-4">
-        <div class="hero__stat">
-          <div class="hero__stat-value">2,000+</div>
-          <div class="hero__stat-label">Appraisals Completed</div>
+    </div>
+    <div class="hero__scroll-hint reveal-el reveal-delay-3">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: STATS STRIP ─────────────────────── -->
+  <section class="stats-strip" id="stats">
+    <div class="stats-strip__inner">
+      <div class="stat-block reveal-el">
+        <div class="stat-block__value counter" data-target="2000" data-suffix="+">0</div>
+        <div class="stat-block__label">Appraisals Completed</div>
+      </div>
+      <div class="stat-block__divider"></div>
+      <div class="stat-block reveal-el reveal-delay-1">
+        <div class="stat-block__value counter" data-target="7.5" data-suffix="%" data-decimal="true">0</div>
+        <div class="stat-block__label">Zillow Off-Market Error</div>
+      </div>
+      <div class="stat-block__divider"></div>
+      <div class="stat-block reveal-el reveal-delay-2">
+        <div class="stat-block__value counter" data-target="1987" data-suffix="">0</div>
+        <div class="stat-block__label">The Year the HVAC Matters</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: SERVICES — HORIZONTAL SCROLL CARDS ─ -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-eyebrow reveal-el">What I Do</div>
+      <h2 class="section-title reveal-el">Four ways I protect your number.</h2>
+    </div>
+    <div class="services-scroll">
+      <div class="services-track">
+        <div class="service-card slide-in-right" style="--delay: 0">
+          <div class="service-card__number">01</div>
+          <h3 class="service-card__title">Pre-Listing</h3>
+          <p class="service-card__text">Know your number before Zillow guesses wrong.</p>
+          <a href="services.html#pre-listing" class="service-card__link">
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
         </div>
-        <div class="hero__stat">
-          <div class="hero__stat-value">5</div>
-          <div class="hero__stat-label">DFW Counties Covered</div>
+        <div class="service-card slide-in-right" style="--delay: 1">
+          <div class="service-card__number">02</div>
+          <h3 class="service-card__title">Purchase / DSCR</h3>
+          <p class="service-card__text">Lender appraisals for investment property.</p>
+          <a href="services.html#purchase" class="service-card__link">
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
         </div>
-        <div class="hero__stat">
-          <div class="hero__stat-value">8,279</div>
-          <div class="hero__stat-label">LinkedIn Followers</div>
+        <div class="service-card slide-in-right" style="--delay: 2">
+          <div class="service-card__number">03</div>
+          <h3 class="service-card__title">Legal / Estate</h3>
+          <p class="service-card__text">Court-defensible, licensed, documented.</p>
+          <a href="services.html#legal" class="service-card__link">
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
         </div>
-        <div class="hero__stat">
-          <div class="hero__stat-value">$350K–420K</div>
-          <div class="hero__stat-label">DFW Median Range</div>
+        <div class="service-card slide-in-right" style="--delay: 3">
+          <div class="service-card__number">04</div>
+          <h3 class="service-card__title">Investment Analysis</h3>
+          <p class="service-card__text">From ARV to DSCR ceiling.</p>
+          <a href="services.html#investment" class="service-card__link">
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── SERVICES ───────────────────────────────────── -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-eyebrow fade-in">What I Do</div>
-      <h2 class="section-title fade-in">Four ways I protect your number.</h2>
-      <p class="section-subtitle fade-in" style="margin-bottom: var(--space-10);">
-        Every service is backed by local market knowledge, 2,000+ completed appraisals, and a report you can hand to any lender, attorney, or counterparty.
-      </p>
-
-      <div class="grid-4">
-        <div class="card fade-in stagger-1">
-          <div class="card__number">01</div>
-          <h3 class="card__title">Pre-Listing Appraisal</h3>
-          <p class="card__text">Know your number before Zillow guesses it wrong. Set your list price with confidence, backed by a licensed opinion — not an algorithm.</p>
-          <a href="services.html#pre-listing" class="card__link">
-            Learn more
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-
-        <div class="card fade-in stagger-2">
-          <div class="card__number">02</div>
-          <h3 class="card__title">Purchase & Lending</h3>
-          <p class="card__text">DSCR, conventional, private lender, and AMC orders. Clean reports, fast turnaround, lender-ready documentation every time.</p>
-          <a href="services.html#purchase" class="card__link">
-            Learn more
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-
-        <div class="card fade-in stagger-3">
-          <div class="card__number">03</div>
-          <h3 class="card__title">Divorce & Estate</h3>
-          <p class="card__text">Court-defensible, licensed, and documented. When the stakes are personal, the appraisal has to hold up under scrutiny.</p>
-          <a href="services.html#legal" class="card__link">
-            Learn more
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-
-        <div class="card fade-in stagger-4">
-          <div class="card__number">04</div>
-          <h3 class="card__title">Investment / DSCR</h3>
-          <p class="card__text">BRRRR, flip analysis, portfolio valuation. Understand what your investment is actually worth — not what the Zestimate says.</p>
-          <a href="services.html#investment" class="card__link">
-            Learn more
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
+  <!-- ── SECTION 4: AVM DATA SECTION WITH PARALLAX ───── -->
+  <section class="avm-section" id="avm" data-parallax-bg>
+    <div class="avm-section__overlay"></div>
+    <div class="avm-section__inner">
+      <div class="avm-section__text reveal-el">
+        <div class="section-eyebrow">Algorithms vs. Appraisers</div>
+        <h2 class="section-title">The algorithm didn't walk the property.</h2>
+        <p class="section-subtitle">
+          Automated Valuation Models pull from public data. They can't see the $40K kitchen renovation, assess foundation issues, or know the HOA just approved a special assessment.
+        </p>
       </div>
-    </div>
-  </section>
-
-  <!-- ── SOCIAL PROOF ───────────────────────────────── -->
-  <section class="proof-strip">
-    <div class="container">
-      <div class="proof-strip__inner">
-        <div class="proof-strip__item fade-in">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7B3F2A" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <span><strong>8,279</strong> LinkedIn followers</span>
-        </div>
-        <div class="proof-strip__divider"></div>
-        <div class="proof-strip__item fade-in stagger-1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7B3F2A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span><strong>Licensed</strong> DFW appraiser</span>
-        </div>
-        <div class="proof-strip__divider"></div>
-        <div class="proof-strip__item fade-in stagger-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7B3F2A" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          <span>Est. <strong>2019</strong></span>
-        </div>
-        <div class="proof-strip__divider"></div>
-        <div class="proof-strip__item fade-in stagger-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7B3F2A" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <span><strong>2,000+</strong> appraisals</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── WHY APPRAISERS MATTER ──────────────────────── -->
-  <section class="section avm-section" id="why">
-    <div class="container">
-      <div class="avm-grid">
-        <div class="fade-in-left">
-          <div class="section-eyebrow">Algorithms vs. Appraisers</div>
-          <h2 class="section-title">An AVM can't walk through<br> your front door.</h2>
-          <p class="section-subtitle" style="margin-bottom: var(--space-6);">
-            Automated Valuation Models pull from public data — tax records, recent sales, square footage. They can't see the $40K kitchen renovation. They can't assess foundation issues. They don't know the HOA just approved a special assessment.
-          </p>
-          <p class="section-subtitle" style="margin-bottom: var(--space-8);">
-            A licensed appraiser walks the property, adjusts for what algorithms miss, and delivers a defensible opinion of value. That's the difference between a guess and a number you can use.
-          </p>
-          <a href="services.html" class="btn btn--outline">
-            View Services
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-        <div class="fade-in-right">
-          <div class="data-callout" style="margin-bottom: var(--space-6);">
-            <div class="data-callout__value">7.5%</div>
-            <div class="data-callout__label">Zillow's median error rate on off-market homes nationally</div>
-            <div class="data-callout__source">Source: Zillow Research, 2024</div>
+      <div class="avm-section__data reveal-el reveal-delay-1">
+        <div class="avm-table">
+          <div class="avm-table__row">
+            <span class="avm-table__label">SFR On-Market</span>
+            <span class="avm-table__value">2.4% error</span>
+            <div class="avm-table__bar" style="--bar-width: 17%"></div>
           </div>
-          <div class="data-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="data-point">
-              <div class="data-point__value">1.74%</div>
-              <div class="data-point__label">Dallas County effective tax rate</div>
-            </div>
-            <div class="data-point">
-              <div class="data-point__value">1.47%</div>
-              <div class="data-point__label">Tarrant County effective tax rate</div>
-            </div>
-            <div class="data-point">
-              <div class="data-point__value">$350K–420K</div>
-              <div class="data-point__label">DFW median home price range (2025)</div>
-            </div>
-            <div class="data-point">
-              <div class="data-point__value">1.15x</div>
-              <div class="data-point__label">Typical DSCR loan minimum ratio</div>
-            </div>
+          <div class="avm-table__row">
+            <span class="avm-table__label">SFR Off-Market</span>
+            <span class="avm-table__value">7.5% error</span>
+            <div class="avm-table__bar" style="--bar-width: 53%"></div>
+          </div>
+          <div class="avm-table__row">
+            <span class="avm-table__label">Condo Off-Market</span>
+            <span class="avm-table__value">11.2% error</span>
+            <div class="avm-table__bar" style="--bar-width: 79%"></div>
+          </div>
+          <div class="avm-table__row">
+            <span class="avm-table__label">Unique / Rural</span>
+            <span class="avm-table__value">14.1% error</span>
+            <div class="avm-table__bar" style="--bar-width: 100%"></div>
           </div>
         </div>
+        <div class="avm-table__source">Source: Zillow Research, 2024</div>
       </div>
     </div>
   </section>
 
-  <!-- ── NEWSLETTER ─────────────────────────────────── -->
+  <!-- ── SECTION 5: NEWSLETTER (BEEHIIV EMBED) ──────── -->
   <section class="section newsletter-section" id="newsletter">
     <div class="container">
       <div class="newsletter-section__inner">
-        <div class="fade-in-left">
+        <div class="reveal-el">
           <div class="section-eyebrow">The Newsletter</div>
-          <h2 class="section-title">The Motto Appraisal Newsletter</h2>
-          <p class="section-subtitle" style="margin-bottom: var(--space-6);">
-            DFW market data, appraiser insights, and real-world case studies — delivered to your inbox. Written for agents, investors, and anyone who wants to understand what their property is actually worth.
+          <h2 class="section-title">The Appraisal Perspective — Weekly.</h2>
+          <p class="section-subtitle">
+            DFW market data, appraiser insights, and case studies — delivered to your inbox. Written for agents, investors, and anyone who wants to know what their property is actually worth.
           </p>
-          <a href="newsletter.html" class="btn btn--outline">
-            View Past Issues
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
         </div>
-        <div class="fade-in-right">
-          <div class="newsletter-embed" id="beehiiv-embed">
-            <!-- Replace with Beehiiv embed code -->
-            Beehiiv Newsletter Embed<br>Paste your embed code here
-          </div>
+        <div class="newsletter-embed reveal-el reveal-delay-1">
+          <iframe src="https://embeds.beehiiv.com/pub_6b0e21de-3244-40cb-a06c-b56c603e28fc"
+            data-test-id="beehiiv-embed"
+            width="100%"
+            height="320"
+            frameborder="0"
+            scrolling="no"
+            style="border-radius:12px;background:transparent;">
+          </iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── RECENT POSTS ───────────────────────────────── -->
-  <section class="section" id="posts">
-    <div class="container">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-10); gap: var(--space-4);">
-        <div>
-          <div class="section-eyebrow fade-in">Latest Insights</div>
-          <h2 class="section-title fade-in" style="margin-bottom: 0;">From the newsletter.</h2>
-        </div>
-        <a href="newsletter.html" class="btn btn--ghost fade-in">
-          View all
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="grid-3" id="recent-posts">
-        <!-- Posts injected via JS from JSON -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ─────────────────────────────────────── -->
+  <!-- ── SECTION 6: FOOTER ──────────────────────────── -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service — Home">
-            <svg class="nav__logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="2" y="2" width="32" height="32" rx="4" stroke="#7B3F2A" stroke-width="2"/>
-              <path d="M9 26V10l9 10 9-10v16" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="6" y1="30" x2="30" y2="30" stroke="#7B3F2A" stroke-width="1.5"/>
+            <svg class="nav__logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20,100 L100,25 L180,100" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
+              <rect x="22" y="95" width="44" height="10" fill="currentColor"/>
+              <rect x="36" y="95" width="16" height="100" fill="currentColor"/>
+              <rect x="78" y="95" width="14" height="100" fill="currentColor"/>
+              <rect x="108" y="95" width="14" height="100" fill="currentColor"/>
+              <path d="M78,95 L100,130 L122,95" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="miter" stroke-linecap="square"/>
+              <rect x="140" y="95" width="14" height="100" fill="currentColor"/>
+              <rect x="166" y="95" width="14" height="100" fill="currentColor"/>
+              <path d="M143,98 L168,148 L150,148 L177,195" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <div class="nav__logo-text">
               Motto<span>Appraisal Service</span>
             </div>
           </a>
-          <p>The appraisal perspective no algorithm can give you. Licensed DFW real estate appraiser serving Dallas, Tarrant, Denton, Collin, and Kaufman counties.</p>
+          <p>Licensed DFW Appraiser &middot; Est. 2019</p>
         </div>
         <div>
           <h4 class="footer__heading">Services</h4>
           <ul class="footer__links" role="list">
             <li><a href="services.html#pre-listing">Pre-Listing</a></li>
-            <li><a href="services.html#purchase">Purchase & Lending</a></li>
-            <li><a href="services.html#legal">Divorce & Estate</a></li>
+            <li><a href="services.html#purchase">Purchase &amp; Lending</a></li>
+            <li><a href="services.html#legal">Divorce &amp; Estate</a></li>
             <li><a href="services.html#investment">Investment / DSCR</a></li>
           </ul>
         </div>
@@ -345,13 +327,14 @@
             <li><a href="about.html">About Luke</a></li>
             <li><a href="newsletter.html">Newsletter</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer__heading">Connect</h4>
           <ul class="footer__links" role="list">
             <li><a href="https://linkedin.com/in/lkmotto" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Beehiiv Newsletter</a></li>
+            <li><a href="newsletter.html">Beehiiv Newsletter</a></li>
             <li><a href="contact.html">Book a Call</a></li>
           </ul>
         </div>

@@ -63,7 +63,7 @@ Find `id="tally-embed"` on `contact.html`. Replace with:
 ### Calendly
 Find `id="calendly-embed"` on `contact.html`. Replace with:
 ```html
-<div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-LINK?background_color=0a1628&text_color=f5f0e8&primary_color=7b3f2a" style="min-width:320px;height:500px;"></div>
+<div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-LINK?background_color=0F1629&text_color=F0F0F0&primary_color=00A0DE" style="min-width:320px;height:500px;"></div>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 ```
 
@@ -78,7 +78,7 @@ This site is designed to translate directly into Framer. Here's how:
 
 ### 1. Setup
 - Create a new Framer project
-- Set the site background to `#060F1E`
+- Set the site background to `#0A0E1A`
 - Add Inter from Google Fonts
 - Add JetBrains Mono from Google Fonts
 
@@ -86,14 +86,14 @@ This site is designed to translate directly into Framer. Here's how:
 Create these color variables in Framer:
 | Variable | Value |
 |----------|-------|
-| Ivory | `#F5F0E8` |
-| Navy Dark | `#060F1E` |
-| Mahogany | `#7B3F2A` |
-| Off White | `#C8C2B8` |
-| Slate | `#6B7A90` |
-| Navy Card | `#0A1628` |
-| Navy Border | `#1A2A44` |
-| Navy Light | `#0C1A30` |
+| Ivory (Near-White) | `#F0F0F0` |
+| Navy Dark | `#0A0E1A` |
+| Electric Blue | `#00A0DE` |
+| Blue-Grey | `#B0BEC5` |
+| Cool Slate | `#90A4AE` |
+| Navy Card | `#0F1629` |
+| Navy Border | `#1E2D45` |
+| Navy Surface | `#0F1629` |
 
 ### 3. Typography Styles
 Create these text styles:
@@ -104,11 +104,11 @@ Create these text styles:
 | H3 | Inter | 18-24px (responsive) | 700 | Ivory |
 | Body | Inter | 16-18px | 400 | Off White |
 | Label | JetBrains Mono | 12-14px | 400 | Slate |
-| Stat | JetBrains Mono | Various | 700 | Mahogany |
+| Stat | JetBrains Mono | Various | 700 | Electric Blue |
 
 ### 4. Components to Build
 1. **Navigation** — Fixed, glassmorphism blur background. Logo + links + CTA button.
-2. **Service Card** — Dark card with border, number label, title, description, arrow link. Hover: mahogany glow.
+2. **Service Card** — Dark card with border, number label, title, description, arrow link. Hover: blue glow.
 3. **Data Point** — Mono number + label + optional source. For the stats/data sections.
 4. **Post Card** — Date, title, excerpt, read more link.
 5. **Issue Card** — Issue number, title, description.
@@ -136,6 +136,58 @@ For Beehiiv, Tally, and Calendly:
 - Set page titles and descriptions in Page Settings
 - Add OG images via Page Settings → Social Image
 - Paste Schema.org JSON-LD in Page Settings → Custom Code → Head
+
+## Publishing via Framer Server API
+
+Framer launched a **Server API** (February 2026, free beta) at [framer.com/developers](https://framer.com/developers). This enables programmatic site management — the missing piece for the newsletter-to-blog pipeline.
+
+### How It Works
+
+1. **Install the package:**
+   ```bash
+   npm install framer-api
+   ```
+
+2. **Create an API key** in your Framer project → Site Settings → API Keys.
+
+3. **Connect via WebSocket:**
+   ```javascript
+   import { FramerAPI } from 'framer-api';
+
+   const api = new FramerAPI({
+     apiKey: process.env.FRAMER_API_KEY,
+     siteId: 'your-site-id',
+   });
+
+   await api.connect(); // Opens WebSocket channel
+   ```
+
+4. **Sync CMS collections** (e.g., blog posts from Beehiiv):
+   ```javascript
+   await api.cms.upsertItem('blog-posts', {
+     slug: 'why-your-zestimate-dropped-15k',
+     title: 'Why Your Zestimate Dropped $15K Overnight',
+     body: markdownContent,
+     publishedAt: new Date().toISOString(),
+   });
+   ```
+
+5. **Publish changes:**
+   ```javascript
+   await api.publish(); // Deploys the updated site
+   ```
+
+### Newsletter Pipeline (Planned)
+
+This is how the newsletter pipeline will eventually auto-publish to the blog:
+
+1. New issue published on Beehiiv → webhook fires
+2. Serverless function receives webhook, extracts content
+3. Content is formatted and pushed to Framer CMS via the Server API
+4. Framer auto-publishes the updated blog page
+5. No manual Framer editing required
+
+The Server API uses a WebSocket channel for real-time communication and supports updating canvas elements, syncing CMS collections, and triggering publishes — all programmatically.
 
 ## Technical Notes
 
@@ -172,15 +224,15 @@ For Beehiiv, Tally, and Calendly:
 ## Brand Assets
 
 ### Logo
-The SVG logo is inline in the HTML — an "M" lettermark inside a rounded rectangle with a mahogany-accented baseline. The logo uses `currentColor` for adaptability and is defined at `viewBox="0 0 36 36"`.
+The SVG logo is inline in the HTML — an "M" lettermark inside a rounded rectangle with a electric-blue-accented baseline. The logo uses `currentColor` for adaptability and is defined at `viewBox="0 0 36 36"`.
 
 ### Colors
 ```
-IVORY     = #F5F0E8
-NAVY_DARK = #060F1E
-MAHOGANY  = #7B3F2A
-OFF_WHITE = #C8C2B8
-SLATE     = #6B7A90
+IVORY         = #F0F0F0
+NAVY_DARK     = #0A0E1A
+ELECTRIC_BLUE = #00A0DE
+BLUE_GREY     = #B0BEC5
+COOL_SLATE    = #90A4AE
 ```
 
 ### Fonts

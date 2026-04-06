@@ -1,0 +1,6 @@
+# Clean URL rewrites
+/services    /services.html    200
+/about       /about.html       200
+/newsletter  /newsletter.html  200
+/contact     /contact.html     200
+/privacy     /privacy.html     200

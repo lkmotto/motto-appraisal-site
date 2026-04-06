@@ -1,29 +1,70 @@
 /**
- * Motto Appraisal Service — Site JavaScript
- * Minimal, no dependencies. Handles:
- * - Scroll-triggered fade-in animations (Intersection Observer)
+ * Motto Appraisal Service — Parallax + Animation Engine
+ * Zero dependencies. Vanilla JS.
+ * Handles:
+ * - Parallax scroll effects (hero bg, section elements)
+ * - Logo SVG stroke draw animation
+ * - Counter animations (count-up on scroll)
+ * - Scroll-triggered reveal animations (Intersection Observer)
  * - Mobile navigation toggle
  * - Navbar scroll state
+ * - AVM bar chart animation
  * - Dynamic year in footer
- * - Recent posts rendering (JSON)
  */
 
 (function () {
   'use strict';
 
-  /* ── SCROLL ANIMATIONS ────────────────────────────── */
+  /* ── PARALLAX SCROLL HANDLER ──────────────────────── */
 
-  const animatedElements = document.querySelectorAll(
-    '.fade-in, .fade-in-left, .fade-in-right'
+  const heroBg = document.querySelector('.hero-bg');
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  function updateParallax() {
+    const scrolled = window.pageYOffset;
+
+    // Hero background moves at 40% scroll speed
+    if (heroBg) {
+      heroBg.style.transform = 'translateY(' + (scrolled * 0.4) + 'px)';
+    }
+
+    // Any element with data-parallax attribute
+    const parallaxEls = document.querySelectorAll('[data-parallax]');
+    parallaxEls.forEach(function (el) {
+      const rate = parseFloat(el.dataset.parallax) || 0.2;
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        const offset = (rect.top + scrolled) * rate;
+        el.style.transform = 'translateY(' + (offset * 0.1) + 'px)';
+      }
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+
+  /* ── SCROLL-TRIGGERED REVEAL ANIMATIONS ────────────── */
+
+  const revealElements = document.querySelectorAll(
+    '.reveal-el, .slide-in-right, .fade-in, .fade-in-left, .fade-in-right'
   );
 
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       },
@@ -33,29 +74,151 @@
       }
     );
 
-    animatedElements.forEach((el) => observer.observe(el));
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
   } else {
-    // Fallback: show everything immediately
-    animatedElements.forEach((el) => el.classList.add('visible'));
+    revealElements.forEach(function (el) {
+      el.classList.add('visible');
+    });
   }
 
 
-  /* ── MOBILE NAVIGATION ────────────────────────────── */
+  /* ── COUNTER ANIMATIONS ────────────────────────────── */
+
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const isDecimal = el.dataset.decimal === 'true';
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Ease-out curve
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * target;
+
+      if (isDecimal) {
+        el.textContent = current.toFixed(1) + suffix;
+      } else {
+        el.textContent = Math.floor(current).toLocaleString() + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        // Ensure final value is exact
+        if (isDecimal) {
+          el.textContent = target.toFixed(1) + suffix;
+        } else {
+          el.textContent = target.toLocaleString() + suffix;
+        }
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // Observe counters for scroll trigger
+  const counters = document.querySelectorAll('.counter');
+  if ('IntersectionObserver' in window && counters.length) {
+    const counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    counters.forEach(function (el) {
+      counterObserver.observe(el);
+    });
+  }
+
+  // Counter in hero title (the 2,000+ inline)
+  const inlineCounters = document.querySelectorAll('.counter-inline');
+  if ('IntersectionObserver' in window && inlineCounters.length) {
+    const inlineObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseFloat(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1500;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.floor(eased * target);
+              el.textContent = current.toLocaleString() + suffix;
+
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              } else {
+                el.textContent = target.toLocaleString() + suffix;
+              }
+            }
+
+            requestAnimationFrame(update);
+            inlineObserver.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    inlineCounters.forEach(function (el) {
+      inlineObserver.observe(el);
+    });
+  }
+
+
+  /* ── AVM BAR ANIMATION ─────────────────────────────── */
+
+  const avmSection = document.querySelector('.avm-section');
+  if (avmSection && 'IntersectionObserver' in window) {
+    const barObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            avmSection.classList.add('bars-animated');
+            barObserver.unobserve(avmSection);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    barObserver.observe(avmSection);
+  }
+
+
+  /* ── MOBILE NAVIGATION ─────────────────────────────── */
 
   const hamburger = document.querySelector('.nav__hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
 
   if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', function () {
       const isOpen = hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
@@ -63,8 +226,7 @@
       });
     });
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
@@ -76,115 +238,39 @@
   }
 
 
-  /* ── NAVBAR SCROLL STATE ──────────────────────────── */
+  /* ── NAVBAR SCROLL STATE ───────────────────────────── */
 
   const nav = document.querySelector('.nav');
 
   if (nav) {
-    let lastScroll = 0;
-    const scrollThreshold = 50;
-
     window.addEventListener(
       'scroll',
-      () => {
-        const currentScroll = window.scrollY;
-
-        if (currentScroll > scrollThreshold) {
+      function () {
+        if (window.scrollY > 50) {
           nav.classList.add('scrolled');
         } else {
           nav.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
       },
       { passive: true }
     );
   }
 
 
-  /* ── DYNAMIC YEAR ─────────────────────────────────── */
+  /* ── DYNAMIC YEAR ──────────────────────────────────── */
 
-  const yearElements = document.querySelectorAll('#year');
-  const currentYear = new Date().getFullYear();
-  yearElements.forEach((el) => {
+  var yearElements = document.querySelectorAll('#year');
+  var currentYear = new Date().getFullYear();
+  yearElements.forEach(function (el) {
     el.textContent = currentYear;
   });
 
 
-  /* ── RECENT POSTS (Home Page) ─────────────────────── */
+  /* ── SMOOTH SCROLL FOR ANCHOR LINKS ────────────────── */
 
-  const postsContainer = document.getElementById('recent-posts');
-
-  if (postsContainer) {
-    const posts = [
-      {
-        date: 'January 2025',
-        title: 'Why Your Zestimate Dropped $15K Overnight (And Why It Doesn\'t Matter)',
-        excerpt:
-          'AVMs recalibrate constantly. A sudden Zestimate drop doesn\'t mean your house lost value — it means the algorithm got new data. Here\'s what actually happened.',
-        link: '#',
-      },
-      {
-        date: 'December 2024',
-        title: 'DFW Year-End Market Recap: What the Numbers Actually Say',
-        excerpt:
-          'Median prices, inventory levels, and days on market — a data-driven breakdown of 2024 in DFW residential real estate.',
-        link: '#',
-      },
-      {
-        date: 'December 2024',
-        title: 'The DSCR Appraisal: What Investors Need to Know Before Ordering',
-        excerpt:
-          'DSCR loans require a specific type of appraisal with rent surveys and income analysis. Here\'s what to expect and how to avoid delays.',
-        link: '#',
-      },
-    ];
-
-    const postsHTML = posts
-      .map(
-        (post, i) => `
-      <article class="post-card fade-in stagger-${i + 1}">
-        <div class="post-card__date">${post.date}</div>
-        <h3 class="post-card__title">${post.title}</h3>
-        <p class="post-card__excerpt">${post.excerpt}</p>
-        <a href="${post.link}" class="post-card__link">
-          Read more
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </article>
-    `
-      )
-      .join('');
-
-    postsContainer.innerHTML = postsHTML;
-
-    // Re-observe dynamically added elements
-    if ('IntersectionObserver' in window) {
-      const newElements = postsContainer.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: '0px 0px -40px 0px',
-        }
-      );
-      newElements.forEach((el) => observer.observe(el));
-    }
-  }
-
-
-  /* ── SMOOTH SCROLL FOR ANCHOR LINKS ───────────────── */
-
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
+      var target = document.querySelector(this.getAttribute('href'));
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
