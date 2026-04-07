@@ -2129,3 +2129,89 @@ button {
 .footer__social-link:hover svg {
   opacity: 1;
 }
+
+/* ── GRAVATAR INLINE HOVERCARD ───────────────────────────────────── */
+
+.gravatar-hovercard {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 420px;
+  margin-bottom: var(--space-6);
+}
+
+.gravatar-hovercard__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── BEEHIIV EMBED ───────────────────────────────────────────────── */
+
+.beehiiv-embed-wrap {
+  width: 100%;
+}
+
+.beehiiv-embed-wrap iframe {
+  display: block;
+  width: 100%;
+}
+
+/* ── NEWSLETTER SECTION — STACKED LAYOUT ────────────────────────── */
+
+.newsletter-section__inner--stacked {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.newsletter-embed--bottom {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ── HERO PARCEL-MAP THREE.JS BACKGROUND ─────────────────────────── */
+
+.hero-appraisal {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.hero-bg-3d {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.58;
+}
+
+.hero-bg-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-appraisal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(8,16,24,0.84) 0%, rgba(8,16,24,0.52) 45%, rgba(8,16,24,0.68) 100%);
+}
+
+.hero-appraisal .hero__content,
+.hero-appraisal .hero__scroll-hint,
+.hero-appraisal .hero__grid-overlay {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-bg-3d { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-3d { opacity: 0.18; }
+}

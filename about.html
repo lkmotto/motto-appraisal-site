@@ -26,6 +26,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -116,10 +122,35 @@
             </div>
           </div>
 
-          <!-- Gravatar Profile Card -->
-          <div class="gravatar-card-wrap fade-in stagger-4" style="margin-bottom: var(--space-6);">
-            <script src="https://gravatar.com/js/gravatar-profile.js" type="module" crossorigin="anonymous" async defer></script>
-            <gravatar-profile profileurl="https://gravatar.com/lkmotto" style="--gravatar-card-border-radius: 12px; --gravatar-card-background-color: #0D1929; --gravatar-card-text-color: #F2F2F2; --gravatar-card-link-color: #00A8E8; max-width: 420px;" theme="dark"></gravatar-profile>
+          <!-- Gravatar Hovercard -->
+          <div class="gravatar-card-wrap fade-in stagger-4">
+            <div class="gravatar-hovercard">
+              <div class="gravatar-hovercard__inner">
+                <div class="gravatar-hovercard__header-image" style="background: url('https://1.gravatar.com/userimage/207112007/9721cda1bf048a1d38a526dd991ea2b7?size=1024') 50% 50% / cover no-repeat; height: 120px; border-radius: 12px 12px 0 0;"></div>
+                <div class="gravatar-hovercard__header" style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.25rem 0.5rem;">
+                  <a href="https://gravatar.com/lkmotto" target="_blank" rel="noopener">
+                    <img src="https://2.gravatar.com/avatar/13bd79d94b6682a0df1d92432e05db736f62f388a6f5dfd2a2c048e136d39572?s=256&d=initials" width="72" height="72" alt="Luke Motto" style="border-radius:50%;border:2px solid var(--accent);flex-shrink:0;">
+                  </a>
+                  <div>
+                    <h4 style="font-size:var(--text-base);font-weight:700;color:var(--text);margin:0 0 0.2rem;font-family:var(--font-display);">Luke Motto</h4>
+                    <p style="font-size:var(--text-sm);color:var(--text-2);margin:0 0 0.15rem;line-height:1.4;">Licensed Residential Appraiser, Motto Appraisal Service</p>
+                    <p style="font-size:var(--text-xs);color:var(--text-2);margin:0;">Trophy Club, Texas</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:0.75rem;padding:0.75rem 1.25rem;border-top:1px solid var(--border);margin-top:0.75rem;">
+                  <a href="https://gravatar.com/lkmotto" target="_blank" rel="noopener" title="Gravatar" style="opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+                    <img src="https://s.gravatar.com/icons/gravatar.svg" width="28" height="28" alt="Gravatar">
+                  </a>
+                  <a href="https://calendly.com/lkmotto" target="_blank" rel="noopener" title="Book a call" style="opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+                    <img src="https://s.gravatar.com/icons/calendly.svg" width="28" height="28" alt="Calendly">
+                  </a>
+                </div>
+                <div style="padding:0.75rem 1.25rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+                  <a href="https://gravatar.com/lkmotto" target="_blank" rel="noopener" style="font-size:var(--text-xs);color:var(--text-2);text-decoration:none;">gravatar.com/lkmotto</a>
+                  <a href="https://gravatar.com/lkmotto" target="_blank" rel="noopener" style="font-size:var(--text-xs);color:var(--accent);text-decoration:none;">View profile →</a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- LinkedIn Profile Badge -->

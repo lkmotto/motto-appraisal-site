@@ -25,6 +25,12 @@
   })(window,document,'script','dataLayer','GTM-PVPZDCV9');</script>
   <!-- End Google Tag Manager -->
 
+    <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -104,16 +110,18 @@
           </div>
         </div>
         <div class="fade-in-right">
-          <div class="newsletter-embed" id="beehiiv-embed" style="min-height: 360px;">
-            <div class="newsletter-subscribe-block">
-            <p class="subscribe-label">Get the weekly appraisal perspective:</p>
-            <a href="https://mottoappraisalservice.beehiiv.com/subscribe" 
-               target="_blank" rel="noopener"
-               class="btn btn--primary btn--lg subscribe-cta">
-              Subscribe Free
-            </a>
-            <p class="subscribe-note">DFW market data, appraiser insights, real deal math. Weekly.</p>
-          </div>
+          <div class="newsletter-embed beehiiv-embed-wrap" id="beehiiv-embed">
+            <iframe
+              src="https://embeds.beehiiv.com/pub_6b0e21de-3244-40cb-a06c-b56c603e28fc"
+              data-test-id="beehiiv-embed"
+              width="100%"
+              height="320"
+              frameborder="0"
+              scrolling="no"
+              style="border-radius:12px;border:1px solid var(--border);background:var(--bg-panel);width:100%;display:block;"
+              title="The Motto Appraisal Newsletter"
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>
