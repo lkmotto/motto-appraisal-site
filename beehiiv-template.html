@@ -1,0 +1,472 @@
+<!--
+================================================================================
+  MOTTO APPRAISAL SERVICE — BEEHIIV EMAIL TEMPLATE
+  File: beehiiv-template.html
+  Last updated: 2025
+================================================================================
+
+HOW TO APPLY THIS TEMPLATE IN BEEHIIV
+================================================================================
+
+STEP 1 — BEEHIIV DESIGN SETTINGS (Global Color/Font Settings)
+--------------------------------------------------------------
+Go to: Settings > Design > Email
+
+Update the following fields with these exact values:
+
+  Primary Color (button, accent):       #00A0DE
+  Background Color:                     #08111E
+  Header Background:                    #060E1A
+  Footer Background:                    #060E1A
+  Body Text Color:                      #F2F2F2
+  Secondary / Muted Text:               #94A3B8
+  Link Color:                           #00A0DE
+  Border / Divider Color:               #1E3A5F
+  Card / Panel Background:              #0D1929
+  Font Family (body):                   Inter, Arial, sans-serif
+  Font Family (headings):               Inter, Arial, sans-serif
+
+  Button Background:                    #00A0DE
+  Button Text Color:                    #08111E
+  Button Border Radius:                 4px
+
+  Email Max Width:                      600px
+  Header Logo: Upload logo-white.png from assets/
+
+
+STEP 2 — CUSTOM HTML EMAIL EDITOR
+----------------------------------
+In Beehiiv, go to a new post or post template and switch to the
+"Custom HTML" block. Paste the full HTML below (from <table> to </table>)
+into that block.
+
+Replace the placeholder text in [SQUARE BRACKETS] with the real content
+for each issue before publishing.
+
+
+STEP 3 — FIELDS TO UPDATE EACH ISSUE
+--------------------------------------
+  [PREHEADER TEXT]        — 1-2 sentence preview shown in inbox
+  [ISSUE NUMBER]          — e.g., Issue #12
+  [MONTH DAY, YEAR]       — e.g., July 8, 2025
+  [NEWSLETTER HEADLINE]   — Bold article/section title
+  [ARTICLE INTRO TEXT]    — Lead paragraph (2-4 sentences)
+  [BODY PARAGRAPH 1]      — Main content block
+  [BODY PARAGRAPH 2]      — Supporting detail or data point
+  [CALL TO ACTION TEXT]   — Button label, e.g., "Read the Full Analysis"
+  [ARTICLE URL]           — Target URL for the button
+  [SECTION 2 HEADLINE]    — Second article or tip header
+  [SECTION 2 BODY]        — Content for the second section
+
+
+STEP 4 — UNSUBSCRIBE LINK
+---------------------------
+Beehiiv automatically appends an unsubscribe link when sending.
+The placeholder {{unsubscribe_link}} in the footer is replaced by
+Beehiiv's system. Do NOT remove it.
+
+
+STEP 5 — BEEHIIV SENDER SETTINGS
+----------------------------------
+Go to: Settings > Publication > Sender Info
+  Sender Name:     Luke Motto — Motto Appraisal Service
+  Reply-To Email:  luke@mottoappraisal.com
+  From Domain:     mottoappraisalservice.beehiiv.com (or custom domain)
+
+
+STEP 6 — PREVIEW & TEST
+-------------------------
+Always send a test email to yourself before publishing.
+Check on both desktop and mobile. Verify all links work.
+
+================================================================================
+  BRAND QUICK REFERENCE
+================================================================================
+  Background:         #08111E   (deep navy)
+  Header/Footer bg:   #060E1A   (darker navy)
+  Accent blue:        #00A0DE   (electric blue — buttons, links, dividers)
+  Body text:          #F2F2F2   (near-white)
+  Secondary text:     #94A3B8   (blue-grey)
+  Border:             #1E3A5F   (subtle blue border)
+  Card background:    #0D1929   (dark panel)
+  Button text:        #08111E   (dark on electric blue button)
+================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+  <title>The Motto Appraisal Newsletter</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* ── RESET ─────────────────────────────── */
+    * { box-sizing: border-box; }
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; min-width: 100%; background-color: #08111E; }
+
+    /* ── TYPOGRAPHY ─────────────────────────── */
+    body, td, th, p, a {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* ── LINKS ──────────────────────────────── */
+    a { color: #00A0DE; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── MOBILE RESPONSIVE ──────────────────── */
+    @media only screen and (max-width: 620px) {
+      .email-wrapper { width: 100% !important; }
+      .email-container { width: 100% !important; max-width: 100% !important; }
+      .mobile-pad { padding-left: 20px !important; padding-right: 20px !important; }
+      .mobile-stack { display: block !important; width: 100% !important; }
+      .mobile-hide { display: none !important; }
+      .stat-cell { width: 50% !important; display: inline-block !important; }
+      h1.headline { font-size: 24px !important; line-height: 32px !important; }
+      .btn-cell { text-align: center !important; }
+    }
+
+    /* ── DARK MODE ──────────────────────────── */
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #08111E !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#08111E;width:100%;">
+
+  <!-- PREHEADER (hidden preview text in inbox) -->
+  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#08111E;">
+    [PREHEADER TEXT — 1 to 2 sentences shown in inbox preview. Keep under 140 characters.]&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌
+  </div>
+
+  <!-- OUTER WRAPPER -->
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#08111E;">
+    <tr>
+      <td align="center" style="padding:24px 16px 0 16px;">
+
+        <!-- EMAIL CONTAINER (max 600px) -->
+        <table class="email-container" role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;width:100%;">
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- HEADER                                      -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#060E1A;border-radius:8px 8px 0 0;border:1px solid #1E3A5F;border-bottom:none;padding:32px 40px 24px 40px;" class="mobile-pad">
+
+              <!-- Logo + Brand Row -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="padding-bottom:20px;">
+                    <!-- Brand mark (text-based, works without images) -->
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="vertical-align:middle;padding-right:12px;">
+                          <!-- Accent bracket icon substitute -->
+                          <div style="width:36px;height:36px;background-color:#00A0DE;border-radius:4px;display:inline-block;text-align:center;line-height:36px;font-size:18px;font-weight:900;color:#08111E;font-family:Inter,Arial,sans-serif;">M</div>
+                        </td>
+                        <td style="vertical-align:middle;">
+                          <span style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:0.18em;color:#F2F2F2;text-transform:uppercase;line-height:1;">MOTTO APPRAISAL SERVICE</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Accent divider -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="padding-bottom:20px;">
+                    <div style="height:2px;background-color:#00A0DE;border-radius:1px;"></div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Newsletter title + issue info -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <p style="margin:0 0 6px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;color:#00A0DE;text-transform:uppercase;">The Motto Appraisal Newsletter</p>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td>
+                          <span style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;">[ISSUE NUMBER] &nbsp;&bull;&nbsp; [MONTH DAY, YEAR]</span>
+                        </td>
+                        <td align="right">
+                          <a href="https://mottoappraisal.cloud" style="font-family:Inter,Arial,sans-serif;font-size:12px;color:#94A3B8;text-decoration:none;">mottoappraisal.cloud</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- MAIN CONTENT AREA                           -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#08111E;border-left:1px solid #1E3A5F;border-right:1px solid #1E3A5F;padding:40px 40px 0 40px;" class="mobile-pad">
+
+              <!-- ── LEAD HEADLINE ───────────────────── -->
+              <h1 class="headline" style="margin:0 0 16px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:28px;font-weight:800;line-height:36px;color:#F2F2F2;letter-spacing:-0.02em;">
+                [NEWSLETTER HEADLINE]
+              </h1>
+
+              <!-- ── INTRO PARAGRAPH ─────────────────── -->
+              <p style="margin:0 0 24px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:16px;line-height:26px;color:#F2F2F2;">
+                [ARTICLE INTRO TEXT — 2 to 4 sentences. Hook the reader. State the key insight or number up front.]
+              </p>
+
+              <!-- ── ACCENT DIVIDER ──────────────────── -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="padding-bottom:32px;">
+                    <div style="height:1px;background-color:#1E3A5F;"></div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ── BODY PARAGRAPH 1 ───────────────── -->
+              <p style="margin:0 0 20px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:25px;color:#F2F2F2;">
+                [BODY PARAGRAPH 1 — Main content. Explain the data, situation, or insight. 3-5 sentences.]
+              </p>
+
+              <!-- ── PULL QUOTE / DATA HIGHLIGHT ───────── -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:24px;">
+                <tr>
+                  <td style="background-color:#0D1929;border-left:3px solid #00A0DE;border-radius:0 6px 6px 0;padding:18px 20px;">
+                    <p style="margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:24px;color:#F2F2F2;font-style:italic;">
+                      "[PULL QUOTE, KEY STAT, OR CALLOUT — e.g., On a $400K home in DFW, a 7.5% AVM error is $30,000. That's the cost of guessing.]"
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ── BODY PARAGRAPH 2 ───────────────── -->
+              <p style="margin:0 0 32px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:25px;color:#F2F2F2;">
+                [BODY PARAGRAPH 2 — Supporting detail, case study reference, or practical takeaway. 2-4 sentences.]
+              </p>
+
+              <!-- ── CTA BUTTON ──────────────────────── -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn-cell">
+                <tr>
+                  <td style="padding-bottom:40px;">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="[ARTICLE URL]" style="height:46px;v-text-anchor:middle;width:240px;" arcsize="8%" stroke="f" fillcolor="#00A0DE">
+                      <w:anchorlock/>
+                      <center style="color:#08111E;font-family:Inter,Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">READ MORE ON BEEHIIV</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <a href="[ARTICLE URL]" style="display:inline-block;background-color:#00A0DE;color:#08111E;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:4px;mso-hide:all;">
+                      READ MORE ON BEEHIIV &rarr;
+                    </a>
+                    <!--<![endif]-->
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- DIVIDER BETWEEN SECTIONS                    -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#08111E;border-left:1px solid #1E3A5F;border-right:1px solid #1E3A5F;padding:0 40px;" class="mobile-pad">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="padding-bottom:32px;">
+                    <div style="height:2px;background-color:#00A0DE;border-radius:1px;opacity:0.35;"></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- SECTION 2 — SECOND ARTICLE / TIP           -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#08111E;border-left:1px solid #1E3A5F;border-right:1px solid #1E3A5F;padding:0 40px;" class="mobile-pad">
+
+              <!-- Eyebrow label -->
+              <p style="margin:0 0 8px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;color:#00A0DE;text-transform:uppercase;">
+                DFW Market Pulse
+              </p>
+
+              <!-- Section 2 headline -->
+              <h2 style="margin:0 0 16px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:20px;font-weight:700;line-height:28px;color:#F2F2F2;letter-spacing:-0.01em;">
+                [SECTION 2 HEADLINE]
+              </h2>
+
+              <!-- Section 2 body -->
+              <p style="margin:0 0 32px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:25px;color:#F2F2F2;">
+                [SECTION 2 BODY — Market data, quick tip, or case study recap. 2-4 sentences.]
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- DATA / STATS CARD                           -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#08111E;border-left:1px solid #1E3A5F;border-right:1px solid #1E3A5F;padding:0 40px 40px 40px;" class="mobile-pad">
+
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0D1929;border:1px solid #1E3A5F;border-radius:8px;overflow:hidden;">
+                <tr>
+                  <td style="padding:20px 24px 12px 24px;border-bottom:1px solid #1E3A5F;">
+                    <p style="margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;color:#94A3B8;text-transform:uppercase;">By the Numbers</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:20px 24px;">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td class="stat-cell" style="padding:8px 16px 8px 0;border-right:1px solid #1E3A5F;width:33%;" align="center">
+                          <div style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:26px;font-weight:800;color:#00A0DE;line-height:1;">2,000+</div>
+                          <div style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;color:#94A3B8;margin-top:4px;line-height:1.4;">Appraisals<br>Completed</div>
+                        </td>
+                        <td class="stat-cell" style="padding:8px 16px;border-right:1px solid #1E3A5F;width:33%;" align="center">
+                          <div style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:26px;font-weight:800;color:#00A0DE;line-height:1;">7.5%</div>
+                          <div style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;color:#94A3B8;margin-top:4px;line-height:1.4;">Zillow Off-Market<br>Error Rate</div>
+                        </td>
+                        <td class="stat-cell" style="padding:8px 0 8px 16px;width:33%;" align="center">
+                          <div style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:26px;font-weight:800;color:#00A0DE;line-height:1;">3–5</div>
+                          <div style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;color:#94A3B8;margin-top:4px;line-height:1.4;">Day Turnaround<br>Rush Available</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- SERVICES QUICK LINKS                        -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#0D1929;border-left:1px solid #1E3A5F;border-right:1px solid #1E3A5F;border-top:1px solid #1E3A5F;padding:28px 40px;" class="mobile-pad">
+
+              <p style="margin:0 0 16px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;color:#94A3B8;text-transform:uppercase;">Services</p>
+
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="padding-right:8px;width:50%;vertical-align:top;">
+                    <p style="margin:0 0 8px 0;"><a href="https://mottoappraisal.cloud/services.html#pre-listing" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#00A0DE;text-decoration:none;">&#8594; Pre-Listing Appraisal</a></p>
+                    <p style="margin:0 0 8px 0;"><a href="https://mottoappraisal.cloud/services.html#legal" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#00A0DE;text-decoration:none;">&#8594; Divorce &amp; Estate</a></p>
+                    <p style="margin:0;"><a href="https://mottoappraisal.cloud/services.html#refinance" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#00A0DE;text-decoration:none;">&#8594; Refinance Appraisal</a></p>
+                  </td>
+                  <td style="padding-left:8px;width:50%;vertical-align:top;">
+                    <p style="margin:0 0 8px 0;"><a href="https://mottoappraisal.cloud/services.html#purchase" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#00A0DE;text-decoration:none;">&#8594; DSCR / Lending</a></p>
+                    <p style="margin:0 0 8px 0;"><a href="https://mottoappraisal.cloud/services.html#investment" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#00A0DE;text-decoration:none;">&#8594; Investment Analysis</a></p>
+                    <p style="margin:0;"><a href="https://mottoappraisal.cloud/services.html#consulting" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#00A0DE;text-decoration:none;">&#8594; Firm Consulting</a></p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- FOOTER                                      -->
+          <!-- ══════════════════════════════════════════ -->
+          <tr>
+            <td style="background-color:#060E1A;border:1px solid #1E3A5F;border-top:2px solid #00A0DE;border-radius:0 0 8px 8px;padding:32px 40px;" class="mobile-pad">
+
+              <!-- Appraiser info -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:24px;">
+                <tr>
+                  <td>
+                    <p style="margin:0 0 4px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:14px;font-weight:700;color:#F2F2F2;">Luke Motto</p>
+                    <p style="margin:0 0 4px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;">Licensed DFW Appraiser &middot; Motto Appraisal Service</p>
+                    <p style="margin:0 0 4px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;">Trophy Club, TX 76262</p>
+                    <p style="margin:0 0 2px 0;">
+                      <a href="tel:+18172174375" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#00A0DE;text-decoration:none;">(817) 217-4375</a>
+                      &nbsp;&bull;&nbsp;
+                      <a href="mailto:luke@mottoappraisal.com" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#00A0DE;text-decoration:none;">luke@mottoappraisal.com</a>
+                    </p>
+                    <p style="margin:0;">
+                      <a href="https://mottoappraisal.cloud" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#00A0DE;text-decoration:none;">mottoappraisal.cloud</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Footer divider -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:20px;">
+                <tr>
+                  <td>
+                    <div style="height:1px;background-color:#1E3A5F;"></div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Social links -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:20px;">
+                <tr>
+                  <td>
+                    <a href="https://linkedin.com/in/lkmotto" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;text-decoration:none;margin-right:16px;">LinkedIn</a>
+                    <a href="https://twitter.com/mottoappraisal" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;text-decoration:none;margin-right:16px;">X / Twitter</a>
+                    <a href="https://www.instagram.com/mottoappraisalservice/" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;text-decoration:none;margin-right:16px;">Instagram</a>
+                    <a href="https://mottoappraisalservice.beehiiv.com" style="font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:12px;color:#94A3B8;text-decoration:none;">Newsletter Archive</a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Legal / Unsubscribe -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <p style="margin:0 0 8px 0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;line-height:18px;color:#94A3B8;">
+                      You're receiving this because you subscribed to The Motto Appraisal Newsletter. DFW market data, appraiser insights, and case studies — weekly.
+                    </p>
+                    <p style="margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;color:#94A3B8;">
+                      <!-- Beehiiv replaces {{unsubscribe_link}} automatically -->
+                      <a href="{{unsubscribe_link}}" style="color:#94A3B8;text-decoration:underline;">Unsubscribe</a>
+                      &nbsp;&bull;&nbsp;
+                      <a href="https://mottoappraisal.cloud/privacy.html" style="color:#94A3B8;text-decoration:underline;">Privacy Policy</a>
+                      &nbsp;&bull;&nbsp;
+                      <a href="https://mottoappraisalservice.beehiiv.com" style="color:#94A3B8;text-decoration:underline;">View in browser</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Bottom spacing -->
+          <tr>
+            <td style="background-color:#08111E;height:32px;"></td>
+          </tr>
+
+        </table>
+        <!-- END EMAIL CONTAINER -->
+
+      </td>
+    </tr>
+  </table>
+  <!-- END OUTER WRAPPER -->
+
+</body>
+</html>
