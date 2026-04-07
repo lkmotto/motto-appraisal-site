@@ -110,20 +110,28 @@
           </div>
         </div>
         <div class="fade-in-right">
-          <div class="newsletter-embed beehiiv-embed-wrap" id="beehiiv-embed">
-            <iframe
-              src="https://embeds.beehiiv.com/pub_6b0e21de-3244-40cb-a06c-b56c603e28fc"
-              data-test-id="beehiiv-embed"
-              width="100%"
-              height="320"
-              frameborder="0"
-              scrolling="no"
-              style="border-radius:12px;border:1px solid var(--border);background:var(--bg-panel);width:100%;display:block;"
-              title="The Motto Appraisal Newsletter"
-              loading="lazy"
-            ></iframe>
+                    <div class="newsletter-embed beehiiv-embed-wrap" id="beehiiv-embed">
+            <div class="beehiiv-form-wrap">
+              <p class="subscribe-label">Enter your email to subscribe:</p>
+              <form class="beehiiv-form" action="https://mottoappraisalservice.beehiiv.com/subscribe" method="GET" target="_blank">
+                <div class="beehiiv-form__row">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                    class="beehiiv-form__input"
+                    aria-label="Email address"
+                  >
+                  <button type="submit" class="btn btn--primary beehiiv-form__btn">
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+              <p class="subscribe-note">DFW market data, appraiser insights, real deal math. Weekly. No spam.</p>
+            </div>
           </div>
-        </div>
+
       </div>
     </div>
   </section>
