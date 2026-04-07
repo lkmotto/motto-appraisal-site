@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mottoappraisal.com/sitemap.xml
-
-# Disallow admin/staging paths if applicable
-# Disallow: /admin/
-# Disallow: /staging/
+Sitemap: https://mottoappraisal.cloud/sitemap.xml
