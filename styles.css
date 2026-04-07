@@ -2079,26 +2079,7 @@ button {
   padding: var(--space-6);
 }
 
-/* ── HERO CANVAS (THREE.JS) ──────────────────────────────── */
-
-.hero {
-  position: relative;
-}
-
-.hero__content {
-  position: relative;
-  z-index: 1;
-}
-
-#hero-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
+/* hero canvas managed by .hero-bg-3d */
 
 /* ── FOOTER SOCIAL LINKS ─────────────────────────────────── */
 
@@ -2182,24 +2163,19 @@ button {
   }
 }
 
-/* ── HERO PARCEL-MAP THREE.JS BACKGROUND ─────────────────────────── */
-
-.hero-appraisal {
-  position: relative;
-  overflow: clip;
-  isolation: isolate;
-}
+/* ── HERO CANVAS BACKGROUND ──────────────────────────────────────── */
 
 .hero-bg-3d {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 0;          /* behind content, above dark bg */
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 1;           /* let the canvas control its own opacity */
   overflow: hidden;
 }
 
 .hero-bg-3d canvas {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
@@ -2207,20 +2183,21 @@ button {
   height: 100% !important;
 }
 
-/* hero-appraisal overlay removed — content z-index managed by .hero__content */
-.hero-appraisal .hero__content,
-.hero-appraisal .hero__scroll-hint,
-.hero-appraisal .hero__grid-overlay {
+/* Hero content stays above canvas */
+.hero__content {
+  position: relative;
+  z-index: 2;
+}
+.hero__scroll-hint {
   position: relative;
   z-index: 2;
 }
 
 @media (max-width: 768px) {
-  .hero-bg-3d { opacity: 0.3; }
+  .hero-bg-3d { opacity: 0.6; }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-bg-3d { opacity: 0.18; }
+  .hero-bg-3d { display: none; }
 }
 
 /* ── BEEHIIV SUBSCRIBE FORM ──────────────────────────────────────── */
