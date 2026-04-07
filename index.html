@@ -36,7 +36,16 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="assets/site.webmanifest">
-  <link rel="stylesheet" href="styles.css?v=6dc8ce0a">
+  <style>
+    /* Critical: hero canvas fills its container */
+    #hero-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=2b79795f">
 
   <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
@@ -109,7 +118,7 @@
   <!-- ── SECTION 1: HERO WITH PARALLAX ──────────────── -->
   <section class="hero" id="hero">
     <div class="hero-bg-3d" aria-hidden="true">
-      <canvas id="hero-canvas" style="display:block;width:100%;height:100%;"></canvas>
+      <canvas id="hero-canvas"></canvas>
     </div>
     <div class="hero-bg" data-parallax="0.4"></div>
     <div class="hero__grid-overlay"></div>
@@ -421,6 +430,6 @@
   </footer>
 
   <script src="script.js?v=f3fb6bc6" defer></script>
-  <script src="hero-canvas.js?v=5737dfb6" defer></script>
+  <script src="hero-canvas.js" defer></script>
 </body>
 </html>
