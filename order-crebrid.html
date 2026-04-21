@@ -48,7 +48,6 @@
   </style>
 
   <!-- Stripe Buy Button -->
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
   <style>
     /* ── CSS VARIABLES — mirrors styles.css exactly ── */
@@ -547,11 +546,6 @@
       margin-bottom: var(--space-4);
     }
 
-    stripe-buy-button {
-      --stripe-buy-button-background-color: #00A8E8;
-      --stripe-buy-button-border-radius: 8px;
-    }
-
     /* Fallback/placeholder pay button */
     .pay-btn {
       display: block;
@@ -967,14 +961,12 @@
 
           <!-- Stripe Buy Button 
           <div class="stripe-btn-wrap" id="stripe-btn-container">
-            <stripe-buy-button
-              buy-button-id="buy_btn_1TOimIkpXybCB4VfDIJ1h3Et"
-              publishable-key="pk_live_51O9JwlKpXybCB4VfGHad9ZDuFeZIbyMHZGrl7z0oeIf7cNSaD5vqPVdCme7KaPR8xmgsrY7sJaeEomcDQb1tefKd001eel3e5G"
-            >
-            </stripe-buy-button>
-            <noscript>
-              <a href="https://buy.stripe.com/eVqaEY0oj2KFbXj0lad7q05" class="pay-btn">Pay Now — Confirm Order</a>
-            </noscript>
+            <!-- Payment button — direct Stripe checkout link -->
+            <a href="https://buy.stripe.com/eVqdRagnh70V7H37NCd7q04"
+               class="pay-btn"
+               target="_blank" rel="noopener noreferrer">
+              Pay — Confirm Order
+            </a>
           </div>
 
           <p class="payment-card__note">

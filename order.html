@@ -311,12 +311,6 @@
       margin-bottom: var(--space-4);
     }
 
-    /* Override Stripe's default button colors to match brand */
-    stripe-buy-button {
-      --stripe-buy-button-background-color: #00A8E8;
-      --stripe-buy-button-border-radius: 8px;
-    }
-
     /* Fallback button shown if Stripe JS hasn't loaded yet */
     .stripe-fallback-btn {
       display: block;
@@ -697,21 +691,13 @@
             </div>
           </div>
 
-          <!-- Stripe Buy Button -->
-          <div class="stripe-btn-wrap" id="stripe-btn-container">
-            <stripe-buy-button
-              buy-button-id="buy_btn_1TOimIkpXybCB4VfDIJ1h3Et"
-              publishable-key="pk_live_51O9JwlKpXybCB4VfGHad9ZDuFeZIbyMHZGrl7z0oeIf7cNSaD5vqPVdCme7KaPR8xmgsrY7sJaeEomcDQb1tefKd001eel3e5G"
-            >
-            </stripe-buy-button>
-            <!-- Direct link fallback for non-JS environments -->
-            <noscript>
-              <a href="https://buy.stripe.com/14A8wQb2X84Zd1n0lad7q07"
-                 class="stripe-fallback-btn"
-                 target="_blank" rel="noopener">
-                Pay — Order Appraisal
-              </a>
-            </noscript>
+          <!-- Payment button — direct Stripe checkout link -->
+          <div class="stripe-btn-wrap">
+            <a href="https://buy.stripe.com/14A8wQb2X84Zd1n0lad7q07"
+               class="stripe-fallback-btn"
+               target="_blank" rel="noopener noreferrer">
+              Pay $600 — Order Appraisal
+            </a>
           </div>
 
           <p class="checkout-card__note">
@@ -911,7 +897,6 @@
 <script src="script.js"></script>
 
 <!-- Stripe Buy Button Script (loads async — does not block page) -->
-<script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
 </body>
 </html>
