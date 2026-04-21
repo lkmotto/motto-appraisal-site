@@ -14,7 +14,7 @@ const https = require('https');
 
 const APOLLO_API_KEY     = process.env.APOLLO_API_KEY;
 const APOLLO_SEQUENCE_ID = process.env.APOLLO_SEQUENCE_ID || '';  // set in Netlify env
-const MAILBOX_EMAIL      = process.env.APOLLO_MAILBOX_EMAIL || 'luke@mottoappraisal.com';
+const MAILBOX_EMAIL      = process.env.APOLLO_MAILBOX_EMAIL || 'luke@mottoappraisal.cloud';
 
 // ── Helpers ─────────────────────────────────────────────────────────
 
