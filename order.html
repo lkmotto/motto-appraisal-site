@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order an Appraisal — Motto Appraisal Service</title>
+  <meta name="description" content="Order a residential appraisal online. $450 flat fee for SFR appraisals in DFW. Pay securely by card or bank transfer. Licensed appraiser Luke Motto — results in 5–7 days.">
+  <link rel="canonical" href="https://mottoappraisal.cloud/order.html">
+
+  <meta property="og:title" content="Order a DFW Appraisal — $450 Flat Fee">
+  <meta property="og:description" content="Pay online, get scheduled within 48 hours. Licensed residential appraiser serving Dallas-Fort Worth.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mottoappraisal.cloud/order.html">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PVPZDCV9');</script>
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=order1">
+
+  <style>
+    /* ── ORDER PAGE — local styles ───────────────────────── */
+
+    .order-hero {
+      padding: var(--space-16) 0 var(--space-10);
+      text-align: center;
+      border-bottom: 1px solid var(--navy-border);
+      background: linear-gradient(180deg, rgba(0,168,232,0.04) 0%, transparent 100%);
+    }
+
+    .order-hero__eyebrow {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--electric-blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .order-hero__title {
+      font-size: var(--text-2xl);
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--ivory);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+
+    .order-hero__title span {
+      color: var(--electric-blue);
+    }
+
+    .order-hero__sub {
+      font-size: var(--text-base);
+      color: var(--slate);
+      max-width: 540px;
+      margin: 0 auto var(--space-6);
+      line-height: 1.65;
+    }
+
+    /* ── TRUST BAR ─────────────────────────────────────── */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      margin-top: var(--space-4);
+    }
+
+    .trust-bar__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--slate);
+    }
+
+    .trust-bar__item svg {
+      color: var(--electric-blue);
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN GRID ─────────────────────────────────────── */
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: var(--space-10);
+      align-items: start;
+      padding: var(--space-12) 0 var(--space-16);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 860px) {
+      .order-grid {
+        grid-template-columns: 1fr;
+        padding: var(--space-8) 0 var(--space-12);
+      }
+      /* stack checkout card first on mobile */
+      .order-grid .checkout-col { order: -1; }
+    }
+
+    /* ── LEFT: WHAT YOU GET ────────────────────────────── */
+    .deliverable-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .deliverable-list li {
+      display: flex;
+      gap: var(--space-3);
+      align-items: flex-start;
+      font-size: var(--text-sm);
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .deliverable-list li .check {
+      color: var(--electric-blue);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .deliverable-list li strong {
+      color: var(--ivory);
+    }
+
+    .section-label {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--electric-blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+
+    /* ── SERVICE CARDS ─────────────────────────────────── */
+    .service-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+
+    @media (max-width: 600px) {
+      .service-card-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+      padding: var(--space-4);
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-md);
+      transition: border-color 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(0,168,232,0.35);
+    }
+
+    .service-card__name {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: var(--space-1);
+    }
+
+    .service-card__desc {
+      font-size: var(--text-xs);
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    .service-card__price {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--electric-blue);
+      font-weight: 700;
+      margin-top: var(--space-2);
+    }
+
+    /* ── TIMELINE ──────────────────────────────────────── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: var(--space-8);
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: var(--space-4);
+      position: relative;
+    }
+
+    .timeline-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 30px;
+      bottom: -8px;
+      width: 1px;
+      background: var(--navy-border);
+    }
+
+    .timeline-step__dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy-card);
+      border: 1px solid var(--electric-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--electric-blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .timeline-step__content {
+      padding-bottom: var(--space-5);
+    }
+
+    .timeline-step__title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 2px;
+    }
+
+    .timeline-step__desc {
+      font-size: var(--text-xs);
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    /* ── RIGHT: CHECKOUT CARD ──────────────────────────── */
+    .checkout-col {
+      position: sticky;
+      top: var(--space-8);
+    }
+
+    .checkout-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .checkout-card__header {
+      padding: var(--space-5) var(--space-6) var(--space-4);
+      border-bottom: 1px solid var(--navy-border);
+      background: rgba(0,168,232,0.04);
+    }
+
+    .checkout-card__service {
+      font-size: var(--text-xs);
+      color: var(--slate);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-1);
+    }
+
+    .checkout-card__title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--ivory);
+      margin-bottom: var(--space-2);
+    }
+
+    .checkout-card__price {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+    }
+
+    .price-amount {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--electric-blue);
+      line-height: 1;
+    }
+
+    .price-label {
+      font-size: var(--text-xs);
+      color: var(--slate);
+    }
+
+    .checkout-card__body {
+      padding: var(--space-5) var(--space-6);
+    }
+
+    /* ── STRIPE BUY BUTTON CONTAINER ───────────────────── */
+    .stripe-btn-wrap {
+      margin-bottom: var(--space-4);
+    }
+
+    /* Override Stripe's default button colors to match brand */
+    stripe-buy-button {
+      --stripe-buy-button-background-color: #00A8E8;
+      --stripe-buy-button-border-radius: 8px;
+    }
+
+    /* Fallback button shown if Stripe JS hasn't loaded yet */
+    .stripe-fallback-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--electric-blue);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .stripe-fallback-btn:hover {
+      background: var(--electric-blue-hover);
+      transform: translateY(-1px);
+    }
+
+    .checkout-card__note {
+      font-size: var(--text-xs);
+      color: var(--slate);
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: var(--space-4);
+    }
+
+    .checkout-card__note a {
+      color: var(--electric-blue);
+      text-decoration: none;
+    }
+
+    .payment-methods {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-top: var(--space-3);
+    }
+
+    .pm-badge {
+      height: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      font-size: 10px;
+      color: var(--slate);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .secure-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--slate);
+      margin-top: var(--space-3);
+    }
+
+    .checkout-card__divider {
+      height: 1px;
+      background: var(--navy-border);
+      margin: var(--space-4) 0;
+    }
+
+    /* ACH savings callout */
+    .ach-callout {
+      background: rgba(0,168,232,0.06);
+      border: 1px solid rgba(0,168,232,0.18);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .ach-callout__title {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--electric-blue);
+      margin-bottom: 4px;
+    }
+
+    .ach-callout__text {
+      font-size: var(--text-xs);
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    /* ── OTHER APPRAISAL TYPES ─────────────────────────── */
+    .other-types {
+      padding: var(--space-10) 0 var(--space-16);
+      border-top: 1px solid var(--navy-border);
+    }
+
+    .other-types__title {
+      font-size: var(--text-xl);
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--ivory);
+      margin-bottom: var(--space-2);
+    }
+
+    .other-types__sub {
+      font-size: var(--text-sm);
+      color: var(--slate);
+      margin-bottom: var(--space-8);
+    }
+
+    .other-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .other-type-card {
+      padding: var(--space-5);
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .other-type-card:hover {
+      border-color: rgba(0,168,232,0.4);
+      transform: translateY(-2px);
+    }
+
+    .other-type-card__name {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .other-type-card__price {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--electric-blue);
+      font-weight: 700;
+    }
+
+    .other-type-card__desc {
+      font-size: var(--text-xs);
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    .other-type-card__cta {
+      font-size: var(--text-xs);
+      color: var(--electric-blue);
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── FAQ ───────────────────────────────────────────── */
+    .faq-section {
+      padding: var(--space-10) 0 var(--space-16);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-title {
+      font-size: var(--text-xl);
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--ivory);
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--navy-border);
+      padding: var(--space-4) 0;
+    }
+
+    .faq-q {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: var(--space-2);
+    }
+
+    .faq-a {
+      font-size: var(--text-sm);
+      color: var(--slate);
+      line-height: 1.65;
+    }
+
+    .faq-a a {
+      color: var(--electric-blue);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVPZDCV9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ── NAV ────────────────────────────────────────────── -->
+<nav class="nav" id="main-nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="Motto Appraisal Service home">
+      <img src="assets/tmn-logo.png" alt="Motto Appraisal Service" class="nav__logo-mark">
+      <span class="nav__logo-text">Motto Appraisal</span>
+    </a>
+    <div class="nav__links">
+      <a href="services.html" class="nav__link">Services</a>
+      <a href="about.html" class="nav__link">About</a>
+      <a href="blog/index.html" class="nav__link">Insights</a>
+      <a href="contact.html" class="nav__link">Contact</a>
+    </div>
+    <a href="order.html" class="btn btn--primary btn--sm" aria-current="page">Order Now</a>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<section class="order-hero">
+  <div class="container">
+    <div class="order-hero__eyebrow">Order Online — Instant Confirmation</div>
+    <h1 class="order-hero__title">
+      A licensed DFW appraisal.<br>
+      <span>Pay now. Scheduled in 48 hours.</span>
+    </h1>
+    <p class="order-hero__sub">
+      Flat-fee residential appraisal for Tarrant, Dallas, Denton, Collin, and Kaufman counties.
+      Your report delivered in 5–7 business days.
+    </p>
+
+    <div class="trust-bar">
+      <div class="trust-bar__item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        TX Certified Residential
+      </div>
+      <div class="trust-bar__item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Inspected within 48 hours
+      </div>
+      <div class="trust-bar__item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        URAR delivered 5–7 days
+      </div>
+      <div class="trust-bar__item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        Secured by Stripe
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN CONTENT ────────────────────────────────────── -->
+<main class="container">
+  <div class="order-grid">
+
+    <!-- ── LEFT COLUMN: DETAILS ────────────────────────── -->
+    <div class="details-col">
+
+      <!-- What's included -->
+      <div class="section-label">What's included</div>
+      <ul class="deliverable-list">
+        <li>
+          <svg class="check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>URAR (1004) full appraisal report</strong> — the FNMA-standard form accepted by lenders, courts, and estates</span>
+        </li>
+        <li>
+          <svg class="check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Interior + exterior inspection</strong> — Luke Motto personally conducts every inspection</span>
+        </li>
+        <li>
+          <svg class="check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>3–5 verified comparable sales</strong> — sourced from NTREIS MLS with documented adjustments</span>
+        </li>
+        <li>
+          <svg class="check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>PDF delivery via email</strong> — encrypted report sent directly to you</span>
+        </li>
+        <li>
+          <svg class="check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Revision support</strong> — one round of revisions included at no extra charge</span>
+        </li>
+      </ul>
+
+      <!-- Best for -->
+      <div class="section-label" style="margin-top: var(--space-4);">Best for</div>
+      <div class="service-card-grid">
+        <div class="service-card">
+          <div class="service-card__name">Pre-listing</div>
+          <div class="service-card__desc">Know your number before you list. Don't leave equity on the table or scare off buyers.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__name">Refinance / PMI removal</div>
+          <div class="service-card__desc">Required by most lenders. Confirm current value to unlock better rates or drop PMI.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__name">Estate &amp; trust</div>
+          <div class="service-card__desc">Date-of-death or current value for probate, trust settlement, or inherited property.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__name">Tax protest</div>
+          <div class="service-card__desc">Independent value evidence for DCAD, TCAD, or DCAD protest hearings.</div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="section-label" style="margin-top: var(--space-4);">What happens after you pay</div>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-step__dot">1</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Order confirmed immediately</div>
+            <div class="timeline-step__desc">You'll receive an email receipt from Stripe plus a confirmation from luke@mottoappraisal.com.</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-step__dot">2</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Inspection scheduled within 24–48 hours</div>
+            <div class="timeline-step__desc">Luke contacts you directly to set up a 30–45 minute walk-through at the property.</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-step__dot">3</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Report delivered in 5–7 business days</div>
+            <div class="timeline-step__desc">The completed URAR PDF lands in your inbox. Rush delivery available — call to discuss.</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-step__dot">4</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Need a revision? Just ask</div>
+            <div class="timeline-step__desc">One complimentary revision round included. Most requests turned around same day.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /details-col -->
+
+    <!-- ── RIGHT COLUMN: CHECKOUT ───────────────────────── -->
+    <div class="checkout-col">
+      <div class="checkout-card">
+
+        <div class="checkout-card__header">
+          <div class="checkout-card__service">Residential Appraisal — SFR / Condo</div>
+          <div class="checkout-card__title">1004 Full Appraisal</div>
+          <div class="checkout-card__price">
+            <span class="price-amount">$450</span>
+            <span class="price-label">flat fee · no hidden charges</span>
+          </div>
+        </div>
+
+        <div class="checkout-card__body">
+
+          <!-- ACH savings callout -->
+          <div class="ach-callout">
+            <div class="ach-callout__title">Pay by bank transfer — save on fees</div>
+            <div class="ach-callout__text">
+              Stripe accepts ACH bank transfers at 0.8% (max $5 fee) vs 2.9% + $0.30 for cards.
+              Select "Bank transfer" at checkout to keep more money in your pocket.
+            </div>
+          </div>
+
+          <!-- Stripe Buy Button -->
+          <div class="stripe-btn-wrap" id="stripe-btn-container">
+            <stripe-buy-button
+              buy-button-id="buy_btn_1TOgKGKpXybCB4VfDDYHjp2r"
+              publishable-key="pk_live_51O9JwlKpXybCB4VfGHad9ZDuFeZIbyMHZGrl7z0oeIf7cNSaD5vqPVdCme7KaPR8xmgsrY7sJaeEomcDQb1tefKd001eel3e5G"
+            >
+            </stripe-buy-button>
+            <!-- Direct link fallback for non-JS environments -->
+            <noscript>
+              <a href="https://buy.stripe.com/eVqdRagnh70V7H37NCd7q04"
+                 class="stripe-fallback-btn"
+                 target="_blank" rel="noopener">
+                Pay $450 — Order Appraisal
+              </a>
+            </noscript>
+          </div>
+
+          <p class="checkout-card__note">
+            Questions before ordering? Call
+            <a href="tel:+18172174375">(817) 217-4375</a>
+            or <a href="mailto:luke@mottoappraisal.com">email Luke</a>.
+          </p>
+
+          <div class="checkout-card__divider"></div>
+
+          <!-- Payment methods -->
+          <div class="payment-methods">
+            <div class="pm-badge">Visa</div>
+            <div class="pm-badge">MC</div>
+            <div class="pm-badge">Amex</div>
+            <div class="pm-badge">ACH</div>
+            <div class="pm-badge">Apple Pay</div>
+          </div>
+
+          <div class="secure-note">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            Secured by Stripe · 256-bit TLS encryption
+          </div>
+
+        </div>
+      </div><!-- /checkout-card -->
+
+      <!-- Social proof -->
+      <div style="margin-top: var(--space-4); padding: var(--space-4); background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius-lg);">
+        <div style="font-size: var(--text-xs); color: var(--slate); margin-bottom: var(--space-2);">
+          <span style="color: #f59e0b;">★★★★★</span>
+          <span style="font-weight:700; color: var(--ivory);">Luke Motto</span>
+        </div>
+        <p style="font-size: var(--text-xs); color: var(--slate); line-height: 1.6; margin: 0 0 var(--space-3);">
+          "Licensed Certified Residential Appraiser · 2,000+ appraisals completed across DFW ·
+          Tarrant, Dallas, Denton, Collin &amp; Kaufman counties · Member, Texas Association of Appraisers"
+        </p>
+        <div style="font-size: var(--text-xs); color: var(--slate);">
+          TX License #1383898 · Trophy Club, TX 76262
+        </div>
+      </div>
+
+    </div><!-- /checkout-col -->
+
+  </div><!-- /order-grid -->
+
+  <!-- ── OTHER APPRAISAL TYPES ──────────────────────────── -->
+  <section class="other-types">
+    <h2 class="other-types__title">Other appraisal types</h2>
+    <p class="other-types__sub">Don't see what you need above? These are also available — call or email to order.</p>
+    <div class="other-types-grid">
+
+      <a href="tel:+18172174375" class="other-type-card">
+        <div class="other-type-card__name">Desktop Appraisal (1004D)</div>
+        <div class="other-type-card__price">$300</div>
+        <div class="other-type-card__desc">No interior inspection required. Comp-based analysis from MLS data. Ideal for low-risk refinances.</div>
+        <div class="other-type-card__cta">Call to order →</div>
+      </a>
+
+      <a href="tel:+18172174375" class="other-type-card">
+        <div class="other-type-card__name">1073 Condo — Full Appraisal</div>
+        <div class="other-type-card__price">$450</div>
+        <div class="other-type-card__desc">Full URAR-equivalent appraisal for condominiums. Includes HOA review and project analysis.</div>
+        <div class="other-type-card__cta">Call to order →</div>
+      </a>
+
+      <a href="tel:+18172174375" class="other-type-card">
+        <div class="other-type-card__name">2–4 Unit Income Property</div>
+        <div class="other-type-card__price">$600</div>
+        <div class="other-type-card__desc">Small residential income property. Includes rental income analysis and market rent estimates.</div>
+        <div class="other-type-card__cta">Call to order →</div>
+      </a>
+
+      <a href="divorce-appraisal.html" class="other-type-card">
+        <div class="other-type-card__name">Divorce / Estate Appraisal</div>
+        <div class="other-type-card__price">Call for quote</div>
+        <div class="other-type-card__desc">Retrospective or current-date appraisal for legal proceedings. Attorney-quality reporting standard.</div>
+        <div class="other-type-card__cta">Learn more →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────────────────── -->
+  <section class="faq-section">
+    <h2 class="faq-title">Common questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Is the $450 fee truly all-inclusive?</div>
+      <div class="faq-a">Yes. One flat fee covers the inspection, report, and one revision round.
+        No travel surcharges within the 5-county DFW service area. Rush delivery is available for an additional fee — call to discuss.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What properties qualify for the $450 SFR appraisal?</div>
+      <div class="faq-a">Single-family residences (detached) and townhomes in Tarrant, Dallas, Denton, Collin, and Kaufman counties.
+        Condos, 2–4 unit properties, and properties outside DFW may be quoted differently.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does bank transfer (ACH) work at checkout?</div>
+      <div class="faq-a">When you click "Pay $450", Stripe's checkout page appears. Select "Bank transfer" as your payment method
+        and enter your routing/account number. Stripe processes it securely — it typically clears in 1–2 business days.
+        Your appraisal is scheduled once payment clears.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do you accept payment from lenders or AMCs?</div>
+      <div class="faq-a">Yes — institutional clients are invoiced separately with net-15 terms.
+        This online payment page is designed for retail (homeowner) clients.
+        Lenders and AMCs: <a href="mailto:luke@mottoappraisal.com">email Luke directly</a>.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if I need to cancel?</div>
+      <div class="faq-a">If you cancel before the inspection is conducted, a full refund is issued. After inspection, a partial
+        refund of $150 is available if the report has not yet been delivered. Call <a href="tel:+18172174375">(817) 217-4375</a>.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">I'm ordering for a client — who receives the report?</div>
+      <div class="faq-a">Specify the intended user at checkout or in the confirmation email. Reports can be addressed to
+        lenders, attorneys, or the property owner — just note your preference after ordering.</div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img src="assets/tmn-logo.png" alt="Motto Appraisal" class="footer__logo">
+      <p class="footer__tagline">Licensed residential appraiser serving DFW.</p>
+      <div class="footer__social">
+        <a href="https://linkedin.com/in/lkmotto" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://x.com/mottoappraisal" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer__links">
+      <div class="footer__col">
+        <div class="footer__col-title">Services</div>
+        <a href="services.html" class="footer__link">All Services</a>
+        <a href="pre-listing-appraisal.html" class="footer__link">Pre-Listing</a>
+        <a href="refinance-appraisal.html" class="footer__link">Refinance</a>
+        <a href="divorce-appraisal.html" class="footer__link">Divorce</a>
+        <a href="estate-appraisal.html" class="footer__link">Estate</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Areas</div>
+        <a href="trophy-club-tx-appraiser.html" class="footer__link">Trophy Club</a>
+        <a href="southlake-tx-appraiser.html" class="footer__link">Southlake</a>
+        <a href="keller-tx-appraiser.html" class="footer__link">Keller</a>
+        <a href="roanoke-tx-appraiser.html" class="footer__link">Roanoke</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html" class="footer__link">About Luke</a>
+        <a href="blog/index.html" class="footer__link">Insights</a>
+        <a href="contact.html" class="footer__link">Contact</a>
+        <a href="privacy.html" class="footer__link">Privacy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>© 2026 Motto Appraisal Service · TX License #1383898 · Trophy Club, TX 76262</span>
+      <span>(817) 217-4375</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- Stripe Buy Button Script (loads async — does not block page) -->
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+</body>
+</html>
