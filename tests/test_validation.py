@@ -1,4 +1,5 @@
 """Validation tests for motto-appraisal-site (multi-page static HTML site)."""
+
 import json
 import pathlib
 from xml.etree import ElementTree
@@ -23,10 +24,8 @@ def test_all_html_pages_have_doctype():
     """Verify every .html file in repo root has a DOCTYPE declaration."""
     for path in REPO.glob("*.html"):
         content = path.read_text(encoding="utf-8")
-        assert "<!DOCTYPE html>" in content, \
-            f"{path.name} missing DOCTYPE declaration"
-        assert "</html>" in content, \
-            f"{path.name} missing closing </html> tag"
+        assert "<!DOCTYPE html>" in content, f"{path.name} missing DOCTYPE declaration"
+        assert "</html>" in content, f"{path.name} missing closing </html> tag"
 
 
 def test_css_and_js_exist():
@@ -83,8 +82,9 @@ def test_netlify_function_tally_apollo_exists():
     assert path.is_file(), "Missing tally-apollo.js function"
     content = path.read_text(encoding="utf-8")
     assert len(content) > 100, f"tally-apollo.js too small ({len(content)} bytes)"
-    assert "exports.handler" in content or "handler" in content.lower(), \
-        "tally-apollo.js missing exported handler"
+    assert (
+        "exports.handler" in content or "handler" in content.lower()
+    ), "tally-apollo.js missing exported handler"
 
 
 def test_site_webmanifest_is_valid_json():
