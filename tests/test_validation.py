@@ -29,9 +29,13 @@ def test_all_html_pages_have_doctype():
 
 
 def test_css_and_js_exist():
-    """Verify styles.css, script.js, and hero-canvas.js exist and are non-empty."""
-    for name in ["styles.css", "script.js", "hero-canvas.js"]:
-        path = REPO / name
+    """Verify styles.css, src/script.js, and src/hero-canvas.js exist and are non-empty."""
+    checks = [
+        ("styles.css", REPO / "styles.css"),
+        ("src/script.js", REPO / "src" / "script.js"),
+        ("src/hero-canvas.js", REPO / "src" / "hero-canvas.js"),
+    ]
+    for name, path in checks:
         assert path.is_file(), f"Missing: {name}"
         content = path.read_text(encoding="utf-8")
         assert len(content) > 100, f"{name} is too small ({len(content)} bytes)"
