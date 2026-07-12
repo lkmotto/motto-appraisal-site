@@ -14,7 +14,17 @@ app.post('/tally-apollo', async (req, res) => {
   };
   try {
     const result = await handler(event);
-    res.status(result.statusCode).json(JSON.parse(result.body));
+    let parsed;
+    try {
+      parsed = JSON.parse(result.body);
+    } catch (e) {
+      parsed = null;
+    }
+    if (parsed !== null) {
+      res.status(result.statusCode).json(parsed);
+    } else {
+      res.status(result.statusCode).type('text/plain').send(result.body);
+    }
   } catch (err) {
     console.error('Handler error:', err);
     res.status(500).json({ error: 'Internal server error' });
