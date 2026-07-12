@@ -1,0 +1,13 @@
+{
+  "name": "tally-apollo-function",
+  "version": "1.0.0",
+  "description": "Tally form webhook to Apollo CRM bridge - migrated from Netlify Functions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5"
+  }
+}
