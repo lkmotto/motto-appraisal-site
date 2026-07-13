@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Your Appraisal | Motto Appraisal Service</title>
+<meta name="description" content="Track the status of your appraisal order in real-time as it moves through our pipeline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2b79795f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2308111E'/><path d='M8 16h16M16 8v16' stroke='%2300A8E8' stroke-width='2'/></svg>">
+<style>
+.track-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+.track-hero h1 {
+  font-size: var(--text-2xl);
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.track-hero p {
+  color: var(--text-2);
+  font-size: var(--text-lg);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+.track-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  width: 100%;
+}
+.track-form input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.track-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.track-form input::placeholder { color: var(--text-2); }
+.track-form button {
+  padding: 0.875rem 2rem;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.track-form button:hover { background: var(--accent-2); }
+.track-form button:disabled { opacity: 0.5; cursor: wait; }
+
+.track-result {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: none;
+}
+.track-result.active { display: block; }
+
+.track-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.track-card h2 {
+  font-size: var(--text-xl);
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.track-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.track-meta-item label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-2);
+  margin-bottom: 0.25rem;
+}
+.track-meta-item span {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.progress-bar {
+  display: flex;
+  gap: 0;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 6px;
+  background: var(--border);
+}
+.progress-bar-fill {
+  background: var(--accent);
+  transition: width 0.5s ease;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.timeline-item {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  position: relative;
+}
+.timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 2.5rem;
+  bottom: -0.5rem;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item.completed:not(:last-child)::before {
+  background: var(--accent);
+}
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 1;
+}
+.timeline-item.completed .timeline-dot {
+  background: var(--accent);
+  color: var(--white);
+}
+.timeline-item.current .timeline-dot {
+  background: var(--bg-panel);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+.timeline-item.pending .timeline-dot {
+  background: var(--bg-panel);
+  border: 2px solid var(--border);
+  color: var(--text-2);
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.timeline-content h3 {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.timeline-item.pending h3 { color: var(--text-2); }
+.timeline-content p {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  margin-bottom: 0.25rem;
+}
+.timeline-content .timestamp {
+  font-size: 0.75rem;
+  color: var(--text-2);
+  opacity: 0.7;
+}
+.timeline-content .notes {
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--ivory-dim);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.track-error {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-2);
+}
+.track-error h2 { color: var(--text); margin-bottom: 0.5rem; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <img src="assets/motto-logo-white.svg" alt="Motto Appraisal Service" onerror="this.style.display='none'">
+      <span>Motto Appraisal</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/track" style="color: var(--accent); font-weight: 600;">Track Order</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section class="track-hero">
+    <h1>Track Your Appraisal</h1>
+    <p>Enter your tracking ID to see real-time status as your appraisal moves through our pipeline.</p>
+    <form class="track-form" id="track-form">
+      <input type="text" id="track-id" placeholder="e.g. MA-A1B2C3" autocomplete="off" required>
+      <button type="submit" id="track-btn">Track</button>
+    </form>
+  </section>
+
+  <div class="track-result" id="track-result">
+    <!-- Filled by JS -->
+  </div>
+</main>
+
+<script>
+(function() {
+  const API = 'https://track.mottoappraisal.cloud/api';
+  const form = document.getElementById('track-form');
+  const input = document.getElementById('track-id');
+  const btn = document.getElementById('track-btn');
+  const result = document.getElementById('track-result');
+
+  // Check URL for pre-filled ID (?id=MA-XXXX)
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('id')) {
+    input.value = params.get('id');
+    form.dispatchEvent(new Event('submit'));
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+      ' at ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  }
+
+  function render(data) {
+    const { record, timeline } = data;
+    const currentIdx = timeline.findIndex(t => t.status === 'current');
+    const progressPct = ((currentIdx + 1) / timeline.length) * 100;
+
+    let timelineHTML = timeline.map(item => {
+      const dot = item.status === 'completed' ? '&#10003;' : item.status === 'current' ? '&#9679;' : '';
+      const ts = item.event ? fmtDate(item.event.timestamp) : '';
+      const notes = item.event && item.event.notes ? `<div class="notes">${item.event.notes}</div>` : '';
+      return `
+        <div class="timeline-item ${item.status}">
+          <div class="timeline-dot">${dot}</div>
+          <div class="timeline-content">
+            <h3>${item.label}</h3>
+            <p>${item.description}</p>
+            ${ts ? `<div class="timestamp">${ts}</div>` : ''}
+            ${notes}
+          </div>
+        </div>`;
+    }).join('');
+
+    result.innerHTML = `
+      <div class="track-card">
+        <h2>Tracking ID: ${record.trackingId}</h2>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: ${progressPct}%"></div></div>
+        <div class="track-meta">
+          <div class="track-meta-item"><label>Client</label><span>${record.clientName}</span></div>
+          <div class="track-meta-item"><label>Property</label><span>${record.propertyAddress}</span></div>
+          <div class="track-meta-item"><label>Service Type</label><span>${record.serviceType}</span></div>
+          <div class="track-meta-item"><label>Submitted</label><span>${fmtDate(record.createdAt)}</span></div>
+          <div class="track-meta-item"><label>Last Updated</label><span>${fmtDate(record.updatedAt)}</span></div>
+        </div>
+      </div>
+      <div class="track-card">
+        <h2>Pipeline Status</h2>
+        <div class="timeline">${timelineHTML}</div>
+      </div>`;
+    result.classList.add('active');
+  }
+
+  function renderError(msg) {
+    result.innerHTML = `<div class="track-error"><h2>Not Found</h2><p>${msg}</p><p style="margin-top:1rem">Double-check your tracking ID or contact us if you need help.</p></div>`;
+    result.classList.add('active');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = input.value.trim().toUpperCase();
+    if (!id) return;
+    btn.disabled = true;
+    btn.textContent = 'Searching...';
+    result.classList.remove('active');
+
+    try {
+      const resp = await fetch(`${API}/track/${id}`);
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        renderError(err.error || 'Tracking ID not found. Please check and try again.');
+      } else {
+        render(await resp.json());
+      }
+    } catch (err) {
+      renderError('Unable to reach the tracking service. Please try again later.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Track';
+    }
+  });
+})();
+</script>
+</body>
+</html>
